@@ -39,7 +39,12 @@ export async function getUserByOpenId(openId: string) {
 
 export async function listProjects() { const db = await getDb(); if (!db) throw new Error("Database is unavailable."); return db.select().from(projects).orderBy(desc(projects.updatedAt)); }
 export async function listOpportunities() { const db = await getDb(); if (!db) throw new Error("Database is unavailable."); return db.select().from(opportunities).orderBy(desc(opportunities.updatedAt)); }
-export async function listProducts() { const db = await getDb(); if (!db) throw new Error("Database is unavailable."); return db.select().from(products).orderBy(desc(products.updatedAt)); }
+export async function listProducts() {
+  const db = await getDb();
+  if (!db) throw new Error("Database is unavailable.");
+  const rows = await db.select({ product: products, originProjectTitle: projects.title, originProjectCategory: projects.category }).from(products).leftJoin(projects, eq(products.originProjectId, projects.id)).orderBy(desc(products.updatedAt));
+  return rows.map(({ product, originProjectTitle, originProjectCategory }) => ({ ...product, originProjectTitle: originProjectTitle ?? null, originProjectCategory: originProjectCategory ?? null }));
+}
 
 export async function createInquiry(input: InquiryInput) {
   const db = await getDb();
@@ -53,6 +58,8 @@ export async function createInquiry(input: InquiryInput) {
     focus: input.focus || null,
     partnerCategory: input.partnerCategory || null,
     businessCategory: input.businessCategory || null,
+    equipmentType: input.equipmentType || null,
+    contractorSpecialty: input.contractorSpecialty || null,
     siteContext: input.siteContext || null,
     serviceArea: input.serviceArea || null,
     message: input.message,

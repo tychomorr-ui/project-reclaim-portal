@@ -1,0 +1,2 @@
+ALTER TABLE `inquiries` ADD `equipmentType` enum('chainsaws_and_handtools','forestry_and_arborist','heavy_equipment','tractors_and_implements','trailers_and_hauling','woodshop_and_milling','safety_and_ppe','rental_or_repair','other');--> statement-breakpoint
+ALTER TABLE `inquiries` ADD `contractorSpecialty` enum('carpentry_and_rehabilitation','fire_mitigation_and_fuels','forestry_and_arborist','earthwork_and_sitework','hauling_and_logistics','electrical_or_plumbing','roofing_or_building_envelope','landscape_or_irrigation','other');

@@ -24,6 +24,8 @@ export const appRouter = router({
         input.organization ? `Organization: ${input.organization}` : null,
         input.partnerCategory ? `Partner route: ${input.partnerCategory.replaceAll("_", " ")}` : null,
         input.businessCategory ? `Business role: ${input.businessCategory.replaceAll("_", " ")}` : null,
+        input.equipmentType ? `Equipment category: ${input.equipmentType.replaceAll("_", " ")}` : null,
+        input.contractorSpecialty ? `Contractor specialty: ${input.contractorSpecialty.replaceAll("_", " ")}` : null,
         input.siteContext ? `Site context: ${input.siteContext}` : null,
         input.serviceArea ? `Service area: ${input.serviceArea}` : null,
         input.focus ? `Interest: ${input.focus}` : null,

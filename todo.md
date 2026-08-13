@@ -40,7 +40,19 @@
 - [x] Upgrade the public map architecture for future parcel-boundary, public-land, and site-context overlays using licensed or authorized data sources only; do not claim or reproduce proprietary OnX Hunt data.
 - [x] Add a legal-and-clinical readiness section that frames co-occurring mental-health and substance-use support, therapy, probation/parole, justice, and corrections participation as qualified partner pathways—not active services or confirmed relationships.
 - [x] Research and document California-facing behavioral-health, privacy, licensing, correctional-reentry, and geospatial data-readiness requirements with source citations and a professional-review checklist.
-- [ ] Verify new products, training, local-business intake, map readiness, and disclosure paths with automated tests, responsive reviews, and a saved checkpoint.
+- [x] Verify new products, training, local-business intake, map readiness, and disclosure paths with automated tests, responsive reviews, and a saved checkpoint.
 - [x] Add an explicit professional-review checklist to the clinical and legal readiness document covering legal, clinical, privacy, corrections, labor, insurance, safety, and geospatial data-rights review.
 - [x] Complete and document desktop and mobile visual validation for the Products, Skills, Local Business, Readiness, and updated Projects routes.
 - [x] Add the observed desktop and mobile route-validation outcomes, including the map-overlay readiness note, to the persistent Project Reclaim validation record.
+- [x] Add responsive material and origin-project filtering plus meaningful sorting to the reclaimed-goods catalog while preserving transparent empty states.
+- [x] Enhance the project map with clickable site tooltips and independent filters for BLM context, proposed sites, active projects, and verified records, without misrepresenting unavailable or unauthorized layers.
+- [x] Extend the local-business partner intake with equipment-type and contractor-specialty dropdowns, validated API fields, and owner-dashboard visibility.
+- [x] Research authoritative safety and practical market benchmarks, then prepare a source-aware 100-person startup equipment, vehicle, tool, shop, field, PPE, and supply proposal with explicit assumptions and contingency treatment.
+- [x] Add automated coverage and responsive validation for the catalog controls, map controls/tooltips, extended local-business intake, and startup-package record.
+- [ ] Save a validated checkpoint for the Project Reclaim exploration and startup-package expansion.
+- [x] Add executed regression coverage for BLM-context and site-tooltip interaction states, then document the map-control validation outcome.
+- [x] Add focused local-business intake and owner-dashboard regression coverage for equipment-type and contractor-specialty selections, plus a route-level verification record.
+- [x] Add executable site-tooltip interaction-state coverage beyond BLM message states and verify the BLM toggle remains explicitly non-authoritative.
+- [x] Re-read and confirm the persisted validation record includes the final Products, Projects, Local Business, and Admin exploration-control outcomes.
+- [x] Review the startup-package proposal for source links, assumptions, calculated total, exclusions, and procurement gates, then record the verification outcome.
+- [x] Confirm that the startup-package verification outcome is durably present in the validation record before checkpointing.

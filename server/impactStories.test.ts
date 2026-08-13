@@ -16,9 +16,9 @@ describe("Project Reclaim public impact and story records", () => {
     await expect(caller.registry.impactMetrics()).resolves.toEqual([expect.objectContaining({ metricKey: "participants", value: null, unit: "people", verificationStatus: "pending", methodologyNote: expect.any(String) })]);
   });
 
-  it("returns only consent-approved stories supplied by the public story helper", async () => {
-    mocks.listPublishedStories.mockResolvedValueOnce([{ id: 1, title: "A participant-approved progress update", excerpt: "A real approved excerpt.", category: "training", attribution: "Participant", consentStatus: "approved", publicationStatus: "published", consentReviewedAt: new Date(), publishedAt: new Date(), createdAt: new Date(), updatedAt: new Date() }]);
+  it("returns only the public fields supplied by the consent-gated story helper", async () => {
+    mocks.listPublishedStories.mockResolvedValueOnce([{ id: 1, title: "A participant-approved progress update", excerpt: "A real approved excerpt.", category: "training", attribution: "Participant", publishedAt: new Date() }]);
     const caller = appRouter.createCaller(visitorContext);
-    await expect(caller.registry.stories()).resolves.toEqual([expect.objectContaining({ title: expect.any(String), excerpt: expect.any(String), consentStatus: "approved", publicationStatus: "published" })]);
+    await expect(caller.registry.stories()).resolves.toEqual([expect.objectContaining({ title: expect.any(String), excerpt: expect.any(String), attribution: expect.any(String), publishedAt: expect.any(Date) })]);
   });
 });

@@ -62,3 +62,13 @@
 - [x] Create a prioritized Project Reclaim upgrade roadmap spanning data governance, metric verification, participant consent, referrals, safety, project operations, local procurement, and partner onboarding.
 - [x] Research and document privacy, consent, measurement, behavioral-health partnership, and support-services readiness boundaries for responsible public presentation.
 - [x] Add automated coverage and responsive validation for the impact dashboard, services page, consent-first story framework, and upgrade roadmap, then save a validated checkpoint.
+- [x] Add protected owner workflows for source-backed impact metric entry and participant-story consent/publication review without exposing sensitive records publicly.
+- [x] Build a public verified referral and resource directory with accountable ownership, verification dates, scope disclosures, and safe emergency-routing boundaries.
+- [x] Create an authorization-gated first-project field-to-evidence pilot that links a documented scope, work order, crew, materials, completion evidence, and review status without inventing an active site.
+- [x] Research and document privacy, referral verification, emergency-routing, project authorization, and field-evidence release controls for the operational-governance layer.
+- [x] Add automated security, data-contract, and responsive-interface coverage for the owner workflows, referral directory, and field-evidence pilot, then save a validated checkpoint.
+- [x] Add protected owner workflows for source-backed impact metric entry and participant-story consent/publication review without exposing sensitive records publicly.
+- [x] Build a public verified referral and resource directory with accountable ownership, verification dates, scope disclosures, and safe emergency-routing boundaries.
+- [x] Create an authorization-gated first-project field-to-evidence pilot that links a documented scope, work order, crew, materials, completion evidence, and review status without inventing an active site.
+- [x] Research and document privacy, referral verification, emergency-routing, project authorization, and field-evidence release controls for the operational-governance layer.
+- [x] Add automated security, data-contract, and responsive-interface coverage for the owner workflows, referral directory, and field-evidence pilot, then save a validated checkpoint.

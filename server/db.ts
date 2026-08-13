@@ -1,6 +1,7 @@
-import { and, desc, eq, ne } from "drizzle-orm";
+import { and, desc, eq, gte, inArray, ne } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
-import { impactMetrics, inquiries, InsertUser, opportunities, products, projects, stories, users } from "../drizzle/schema";
+import { fieldEvidencePilots, impactMetrics, inquiries, InsertUser, opportunities, products, projects, referralResources, stories, users } from "../drizzle/schema";
+import type { FieldEvidencePilotInput, ImpactMetricInput, ReferralResourceInput, StoryInput } from "./governance";
 import type { InquiryInput } from "./inquiries";
 import { ENV } from "./_core/env";
 
@@ -55,30 +56,34 @@ export async function listPublicImpactMetrics() {
   return Array.from(newestByMetric.values());
 }
 
+export async function listOwnerImpactMetrics() { const db = await getDb(); if (!db) throw new Error("Database is unavailable."); return db.select().from(impactMetrics).orderBy(desc(impactMetrics.updatedAt)); }
+export async function createImpactMetric(input: ImpactMetricInput) { const db = await getDb(); if (!db) throw new Error("Database is unavailable."); const result = await db.insert(impactMetrics).values({ ...input, value: input.value || null, sourceTitle: input.sourceTitle || null, sourceUrl: input.sourceUrl || null, methodologyNote: input.methodologyNote || null, dataAsOf: input.dataAsOf || null, verifiedAt: input.verifiedAt || null, reviewedBy: input.reviewedBy || null }); return Number((result as unknown as { insertId?: number }).insertId); }
+export async function updateImpactMetric(id: number, input: ImpactMetricInput) { const db = await getDb(); if (!db) throw new Error("Database is unavailable."); await db.update(impactMetrics).set({ ...input, value: input.value || null, sourceTitle: input.sourceTitle || null, sourceUrl: input.sourceUrl || null, methodologyNote: input.methodologyNote || null, dataAsOf: input.dataAsOf || null, verifiedAt: input.verifiedAt || null, reviewedBy: input.reviewedBy || null }).where(eq(impactMetrics.id, id)); }
+
 export async function listPublishedStories() {
   const db = await getDb();
   if (!db) throw new Error("Database is unavailable.");
-  return db.select().from(stories).where(and(eq(stories.consentStatus, "approved"), eq(stories.publicationStatus, "published"))).orderBy(desc(stories.publishedAt), desc(stories.updatedAt));
+  return db.select({ id: stories.id, title: stories.title, excerpt: stories.excerpt, category: stories.category, attribution: stories.attribution, publishedAt: stories.publishedAt }).from(stories).where(and(eq(stories.consentStatus, "approved"), eq(stories.publicationStatus, "published"))).orderBy(desc(stories.publishedAt), desc(stories.updatedAt));
 }
+
+export async function listOwnerStories() { const db = await getDb(); if (!db) throw new Error("Database is unavailable."); return db.select().from(stories).orderBy(desc(stories.updatedAt)); }
+export async function createStory(input: StoryInput) { const db = await getDb(); if (!db) throw new Error("Database is unavailable."); const result = await db.insert(stories).values({ ...input, attribution: input.attribution || null, consentReviewedAt: input.consentReviewedAt || null, publishedAt: input.publishedAt || null, reviewedBy: input.reviewedBy || null }); return Number((result as unknown as { insertId?: number }).insertId); }
+export async function updateStory(id: number, input: StoryInput) { const db = await getDb(); if (!db) throw new Error("Database is unavailable."); await db.update(stories).set({ ...input, attribution: input.attribution || null, consentReviewedAt: input.consentReviewedAt || null, publishedAt: input.publishedAt || null, reviewedBy: input.reviewedBy || null }).where(eq(stories.id, id)); }
+
+export async function listPublicReferralResources() { const db = await getDb(); if (!db) throw new Error("Database is unavailable."); return db.select({ id: referralResources.id, organizationName: referralResources.organizationName, serviceType: referralResources.serviceType, publicSummary: referralResources.publicSummary, serviceArea: referralResources.serviceArea, publicUrl: referralResources.publicUrl, publicPhone: referralResources.publicPhone, lastVerifiedAt: referralResources.lastVerifiedAt, nextReviewAt: referralResources.nextReviewAt }).from(referralResources).where(and(eq(referralResources.directoryStatus, "verified"), gte(referralResources.nextReviewAt, new Date()))).orderBy(desc(referralResources.lastVerifiedAt)); }
+export async function listOwnerReferralResources() { const db = await getDb(); if (!db) throw new Error("Database is unavailable."); return db.select().from(referralResources).orderBy(desc(referralResources.updatedAt)); }
+export async function createReferralResource(input: ReferralResourceInput) { const db = await getDb(); if (!db) throw new Error("Database is unavailable."); const result = await db.insert(referralResources).values({ ...input, serviceArea: input.serviceArea || null, publicUrl: input.publicUrl || null, publicPhone: input.publicPhone || null, lastVerifiedAt: input.lastVerifiedAt || null, nextReviewAt: input.nextReviewAt || null, reviewedBy: input.reviewedBy || null }); return Number((result as unknown as { insertId?: number }).insertId); }
+export async function updateReferralResource(id: number, input: ReferralResourceInput) { const db = await getDb(); if (!db) throw new Error("Database is unavailable."); await db.update(referralResources).set({ ...input, serviceArea: input.serviceArea || null, publicUrl: input.publicUrl || null, publicPhone: input.publicPhone || null, lastVerifiedAt: input.lastVerifiedAt || null, nextReviewAt: input.nextReviewAt || null, reviewedBy: input.reviewedBy || null }).where(eq(referralResources.id, id)); }
+
+export async function listPublicFieldEvidencePilots() { const db = await getDb(); if (!db) throw new Error("Database is unavailable."); return db.select({ id: fieldEvidencePilots.id, title: fieldEvidencePilots.title, overview: fieldEvidencePilots.overview, generalArea: fieldEvidencePilots.generalArea, workOrderStatus: fieldEvidencePilots.workOrderStatus, materialPathway: fieldEvidencePilots.materialPathway, publicSummary: fieldEvidencePilots.publicSummary, evidenceUrl: fieldEvidencePilots.evidenceUrl, publicReleasedAt: fieldEvidencePilots.publicReleasedAt }).from(fieldEvidencePilots).where(and(eq(fieldEvidencePilots.publicReleaseStatus, "approved"), inArray(fieldEvidencePilots.authorizationStatus, ["authorized_public_summary", "completed"]), eq(fieldEvidencePilots.reviewStatus, "verified"))).orderBy(desc(fieldEvidencePilots.publicReleasedAt)); }
+export async function listOwnerFieldEvidencePilots() { const db = await getDb(); if (!db) throw new Error("Database is unavailable."); return db.select().from(fieldEvidencePilots).orderBy(desc(fieldEvidencePilots.updatedAt)); }
+export async function createFieldEvidencePilot(input: FieldEvidencePilotInput) { const db = await getDb(); if (!db) throw new Error("Database is unavailable."); const result = await db.insert(fieldEvidencePilots).values({ ...input, generalArea: input.generalArea || null, authorizationReference: input.authorizationReference || null, crewLabel: input.crewLabel || null, materialPathway: input.materialPathway || null, evidenceSummary: input.evidenceSummary || null, evidenceUrl: input.evidenceUrl || null, publicSummary: input.publicSummary || null, authorizedAt: input.authorizedAt || null, reviewedAt: input.reviewedAt || null, publicReleasedAt: input.publicReleasedAt || null, reviewedBy: input.reviewedBy || null }); return Number((result as unknown as { insertId?: number }).insertId); }
+export async function updateFieldEvidencePilot(id: number, input: FieldEvidencePilotInput) { const db = await getDb(); if (!db) throw new Error("Database is unavailable."); await db.update(fieldEvidencePilots).set({ ...input, generalArea: input.generalArea || null, authorizationReference: input.authorizationReference || null, crewLabel: input.crewLabel || null, materialPathway: input.materialPathway || null, evidenceSummary: input.evidenceSummary || null, evidenceUrl: input.evidenceUrl || null, publicSummary: input.publicSummary || null, authorizedAt: input.authorizedAt || null, reviewedAt: input.reviewedAt || null, publicReleasedAt: input.publicReleasedAt || null, reviewedBy: input.reviewedBy || null }).where(eq(fieldEvidencePilots.id, id)); }
 
 export async function createInquiry(input: InquiryInput) {
   const db = await getDb();
   if (!db) throw new Error("Database is unavailable.");
-  const result = await db.insert(inquiries).values({
-    type: input.type,
-    name: input.name,
-    email: input.email,
-    organization: input.organization || null,
-    phone: input.phone || null,
-    focus: input.focus || null,
-    partnerCategory: input.partnerCategory || null,
-    businessCategory: input.businessCategory || null,
-    equipmentType: input.equipmentType || null,
-    contractorSpecialty: input.contractorSpecialty || null,
-    siteContext: input.siteContext || null,
-    serviceArea: input.serviceArea || null,
-    message: input.message,
-  });
+  const result = await db.insert(inquiries).values({ type: input.type, name: input.name, email: input.email, organization: input.organization || null, phone: input.phone || null, focus: input.focus || null, partnerCategory: input.partnerCategory || null, businessCategory: input.businessCategory || null, equipmentType: input.equipmentType || null, contractorSpecialty: input.contractorSpecialty || null, siteContext: input.siteContext || null, serviceArea: input.serviceArea || null, message: input.message });
   return Number((result as unknown as { insertId?: number }).insertId);
 }
 

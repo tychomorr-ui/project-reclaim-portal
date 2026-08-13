@@ -4,7 +4,8 @@ import { getSessionCookieOptions } from "./_core/cookies";
 import { notifyOwner } from "./_core/notification";
 import { systemRouter } from "./_core/systemRouter";
 import { ownerProcedure, protectedProcedure, publicProcedure, router } from "./_core/trpc";
-import { createInquiry, listInquiries, listOpportunities, listProducts, listProjects, listPublicImpactMetrics, listPublishedStories, updateInquiryAlertStatus, updateInquiryStatus } from "./db";
+import { createInquiry, listInquiries, listOpportunities, listProducts, listProjects, listPublicFieldEvidencePilots, listPublicImpactMetrics, listPublicReferralResources, listPublishedStories, updateInquiryAlertStatus, updateInquiryStatus } from "./db";
+import { governanceRouter } from "./governance";
 import { inquiryInputSchema } from "./inquiries";
 
 export const appRouter = router({
@@ -20,7 +21,10 @@ export const appRouter = router({
     products: publicProcedure.query(() => listProducts()),
     impactMetrics: publicProcedure.query(() => listPublicImpactMetrics()),
     stories: publicProcedure.query(() => listPublishedStories()),
+    resources: publicProcedure.query(() => listPublicReferralResources()),
+    fieldPilots: publicProcedure.query(() => listPublicFieldEvidencePilots()),
   }),
+  governance: governanceRouter,
   inquiries: router({
     create: publicProcedure.input(inquiryInputSchema).mutation(async ({ input }) => {
       const inquiryId = await createInquiry(input);

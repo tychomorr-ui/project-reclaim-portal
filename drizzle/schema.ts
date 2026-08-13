@@ -93,6 +93,7 @@ export const impactMetrics = mysqlTable("impact_metrics", {
   methodologyNote: text("methodologyNote"),
   dataAsOf: timestamp("dataAsOf"),
   verifiedAt: timestamp("verifiedAt"),
+  reviewedBy: varchar("reviewedBy", { length: 180 }),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
   updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
 });
@@ -106,7 +107,47 @@ export const stories = mysqlTable("stories", {
   consentStatus: mysqlEnum("consentStatus", ["pending", "approved", "withdrawn"]).notNull().default("pending"),
   publicationStatus: mysqlEnum("publicationStatus", ["draft", "published", "retired"]).notNull().default("draft"),
   consentReviewedAt: timestamp("consentReviewedAt"),
+  reviewedBy: varchar("reviewedBy", { length: 180 }),
   publishedAt: timestamp("publishedAt"),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export const referralResources = mysqlTable("referral_resources", {
+  id: int("id").autoincrement().primaryKey(),
+  organizationName: varchar("organizationName", { length: 220 }).notNull(),
+  serviceType: mysqlEnum("serviceType", ["behavioral_health", "substance_use", "life_skills", "care_navigation", "housing_reentry", "workforce_training", "emergency_support", "other"]).notNull(),
+  publicSummary: text("publicSummary").notNull(),
+  serviceArea: varchar("serviceArea", { length: 200 }),
+  publicUrl: varchar("publicUrl", { length: 1024 }),
+  publicPhone: varchar("publicPhone", { length: 40 }),
+  directoryStatus: mysqlEnum("directoryStatus", ["draft", "verification_pending", "verified", "needs_recheck", "retired"]).notNull().default("draft"),
+  lastVerifiedAt: timestamp("lastVerifiedAt"),
+  nextReviewAt: timestamp("nextReviewAt"),
+  reviewedBy: varchar("reviewedBy", { length: 180 }),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export const fieldEvidencePilots = mysqlTable("field_evidence_pilots", {
+  id: int("id").autoincrement().primaryKey(),
+  title: varchar("title", { length: 220 }).notNull(),
+  overview: text("overview").notNull(),
+  generalArea: varchar("generalArea", { length: 220 }),
+  authorizationReference: varchar("authorizationReference", { length: 240 }),
+  authorizationStatus: mysqlEnum("authorizationStatus", ["draft", "authorization_pending", "authorized_private_tracking", "authorized_public_summary", "completed"]).notNull().default("draft"),
+  workOrderStatus: mysqlEnum("workOrderStatus", ["not_started", "planned", "in_progress", "complete", "on_hold"]).notNull().default("not_started"),
+  crewLabel: varchar("crewLabel", { length: 180 }),
+  materialPathway: varchar("materialPathway", { length: 240 }),
+  evidenceSummary: text("evidenceSummary"),
+  evidenceUrl: varchar("evidenceUrl", { length: 1024 }),
+  reviewStatus: mysqlEnum("reviewStatus", ["not_reviewed", "pending_review", "verified", "needs_revision"]).notNull().default("not_reviewed"),
+  publicReleaseStatus: mysqlEnum("publicReleaseStatus", ["not_approved", "approved", "retired"]).notNull().default("not_approved"),
+  publicSummary: text("publicSummary"),
+  authorizedAt: timestamp("authorizedAt"),
+  reviewedAt: timestamp("reviewedAt"),
+  publicReleasedAt: timestamp("publicReleasedAt"),
+  reviewedBy: varchar("reviewedBy", { length: 180 }),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
   updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
 });
@@ -117,3 +158,5 @@ export type Product = typeof products.$inferSelect;
 export type Inquiry = typeof inquiries.$inferSelect;
 export type ImpactMetric = typeof impactMetrics.$inferSelect;
 export type Story = typeof stories.$inferSelect;
+export type ReferralResource = typeof referralResources.$inferSelect;
+export type FieldEvidencePilot = typeof fieldEvidencePilots.$inferSelect;

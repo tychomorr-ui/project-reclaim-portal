@@ -19,10 +19,13 @@ import Products from "./pages/Products";
 import Skills from "./pages/Skills";
 import LocalBusiness from "./pages/LocalBusiness";
 import Readiness from "./pages/Readiness";
+import Resources from "./pages/Resources";
 import Roadmap from "./pages/Roadmap";
 import Stories from "./pages/Stories";
 import SupportServices from "./pages/SupportServices";
+import FieldPilot from "./pages/FieldPilot";
+import AdminOperations from "./pages/AdminOperations";
 
-function Router() { return <Switch><Route path="/" component={Home} /><Route path="/initiative" component={Initiative} /><Route path="/projects" component={Projects} /><Route path="/products" component={Products} /><Route path="/skills" component={Skills} /><Route path="/local-business" component={LocalBusiness} /><Route path="/readiness" component={Readiness} /><Route path="/support-services" component={SupportServices} /><Route path="/stories" component={Stories} /><Route path="/roadmap" component={Roadmap} /><Route path="/partnerships" component={Partnerships} /><Route path="/opportunities" component={Opportunities} /><Route path="/impact" component={Impact} /><Route path="/meta-mata" component={MetaMata} /><Route path="/nexus" component={Nexus} /><Route path="/contact" component={Contact} /><Route path="/privacy" component={Legal} /><Route path="/terms" component={Legal} /><Route path="/admin" component={Admin} /><Route path="/404" component={NotFound} /><Route component={NotFound} /></Switch>; }
+function Router() { return <Switch><Route path="/" component={Home} /><Route path="/initiative" component={Initiative} /><Route path="/projects" component={Projects} /><Route path="/products" component={Products} /><Route path="/skills" component={Skills} /><Route path="/local-business" component={LocalBusiness} /><Route path="/readiness" component={Readiness} /><Route path="/support-services" component={SupportServices} /><Route path="/resources" component={Resources} /><Route path="/field-pilot" component={FieldPilot} /><Route path="/stories" component={Stories} /><Route path="/roadmap" component={Roadmap} /><Route path="/partnerships" component={Partnerships} /><Route path="/opportunities" component={Opportunities} /><Route path="/impact" component={Impact} /><Route path="/meta-mata" component={MetaMata} /><Route path="/nexus" component={Nexus} /><Route path="/contact" component={Contact} /><Route path="/privacy" component={Legal} /><Route path="/terms" component={Legal} /><Route path="/admin/operations" component={AdminOperations} /><Route path="/admin" component={Admin} /><Route path="/404" component={NotFound} /><Route component={NotFound} /></Switch>; }
 function App() { return <ErrorBoundary><ThemeProvider defaultTheme="light"><TooltipProvider><Toaster /><Router /></TooltipProvider></ThemeProvider></ErrorBoundary>; }
 export default App;

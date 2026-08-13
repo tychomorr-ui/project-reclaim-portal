@@ -1,17 +1,7 @@
-import { boolean, int, mysqlEnum, mysqlTable, text, timestamp, varchar } from "drizzle-orm/mysql-core";
+import { boolean, decimal, int, mysqlEnum, mysqlTable, text, timestamp, varchar } from "drizzle-orm/mysql-core";
 
-/**
- * Core user table backing auth flow.
- * Extend this file with additional tables as your product grows.
- * Columns use camelCase to match both database fields and generated types.
- */
 export const users = mysqlTable("users", {
-  /**
-   * Surrogate primary key. Auto-incremented numeric value managed by the database.
-   * Use this for relations between tables.
-   */
   id: int("id").autoincrement().primaryKey(),
-  /** Manus OAuth identifier (openId) returned from the OAuth callback. Unique per user. */
   openId: varchar("openId", { length: 64 }).notNull().unique(),
   name: text("name"),
   email: varchar("email", { length: 320 }),
@@ -30,16 +20,12 @@ export const projects = mysqlTable("projects", {
   title: varchar("title", { length: 180 }).notNull(),
   slug: varchar("slug", { length: 200 }).notNull().unique(),
   summary: text("summary").notNull(),
-  category: mysqlEnum("category", [
-    "fire_mitigation",
-    "wood_reclamation",
-    "workforce_development",
-    "land_restoration",
-    "community_infrastructure",
-  ]).notNull(),
+  category: mysqlEnum("category", ["fire_mitigation", "wood_reclamation", "workforce_development", "land_restoration", "community_infrastructure"]).notNull(),
   status: mysqlEnum("status", ["active", "planned", "completed", "unverified"]).notNull().default("unverified"),
   verificationStatus: mysqlEnum("verificationStatus", ["verified", "unverified"]).notNull().default("unverified"),
   locationLabel: varchar("locationLabel", { length: 200 }),
+  latitude: decimal("latitude", { precision: 10, scale: 7 }),
+  longitude: decimal("longitude", { precision: 10, scale: 7 }),
   impactMetricLabel: varchar("impactMetricLabel", { length: 160 }),
   impactMetricValue: varchar("impactMetricValue", { length: 160 }),
   evidenceUrl: varchar("evidenceUrl", { length: 1024 }),
@@ -68,6 +54,8 @@ export const inquiries = mysqlTable("inquiries", {
   organization: varchar("organization", { length: 180 }),
   phone: varchar("phone", { length: 40 }),
   focus: varchar("focus", { length: 180 }),
+  partnerCategory: mysqlEnum("partnerCategory", ["cal_fire", "hud", "terra", "tribal_ecorestoration_alliance", "county_or_local_government", "tribal_government", "contractor_or_forestry", "equipment_or_material_partner", "workforce_or_support_provider", "other"]),
+  siteContext: varchar("siteContext", { length: 240 }),
   message: text("message").notNull(),
   status: mysqlEnum("status", ["new", "reviewing", "responded", "archived"]).notNull().default("new"),
   emailNotificationSent: boolean("emailNotificationSent").notNull().default(false),

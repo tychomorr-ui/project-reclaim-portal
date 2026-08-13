@@ -13,8 +13,8 @@
 - [x] Implement an owner-only protected administrative dashboard for reviewing and managing all incoming contact and partnership inquiries.
 - [x] Add Vitest coverage for public-data contracts, inquiry validation, protected dashboard access, and notification triggering.
 - [x] Validate the interface at desktop and mobile breakpoints, resolve console and build errors, and review accessibility-critical interaction paths.
-- [ ] Create a final project checkpoint after verifying that all completed checklist items are accurately marked.
-- [ ] Keep third-party transactional email delivery disabled until the site owner explicitly chooses to activate it; retain in-app owner alerts and the protected inquiry dashboard in the meantime.
+- [x] Create a final project checkpoint after verifying that all completed checklist items are accurately marked.
+- [x] Keep third-party transactional email delivery disabled until the site owner explicitly chooses to activate it; retain in-app owner alerts and the protected inquiry dashboard in the meantime.
 - [x] Prioritize the Project Reclaim landing page and deepen the visible connections between its physical mission, operating branches, partner pathways, evidence layer, NEXINUS, and Root before addressing secondary integrations.
 - [x] Replace every public-facing use of “Nexus” with the exact connected-network name “NEXINUS,” including navigation, headings, labels, and descriptions.
 - [x] Implement a clearly sourced evidence timeline and impact-readiness milestones without inventing field metrics.
@@ -25,3 +25,12 @@
 - [x] Run explicit keyboard-path checks for the mobile navigation, public inquiry forms, and owner status controls, then append the observed results to VALIDATION.md.
 - [x] Reset the development console log, re-check the validated routes, and record a clean Project Reclaim application-console result in VALIDATION.md.
 - [x] Strengthen public registry and opportunity Vitest coverage with representative response-shape assertions for all published status, category, location, and verification fields.
+- [x] Add an interactive geographic map layer with clearly distinguished proposed, active, and verified site states for land restoration and fire mitigation, without fabricating site locations or operating work.
+- [x] Expand partner engagement with tailored inquiry pathways for CAL FIRE, HUD, TERRA, Tribal EcoRestoration Alliance, counties, contractors, and local equipment or material partners without implying endorsement or participation.
+- [x] Expand the NEXINUS page with an accessible visual systems diagram showing Project Reclaim’s connection to Root, site-level work, partner pathways, materials, workforce, and evidence.
+- [x] Create a clearly labeled META-MATA opportunity scan that explores ethical reintegration, land reuse, material recovery, local procurement, training, and stewardship models without presenting unverified programs or partnerships as active.
+- [x] Add safe, respectful workforce pathways for people returning from incarceration, people experiencing homelessness, people in recovery, and people navigating mental-health barriers, emphasizing voluntary participation, paid work, training, and safeguards.
+- [x] Add automated coverage and responsive validation for the interactive map, tailored partner form selections, systems diagram, and META-MATA content.
+- [ ] Save a validated portal checkpoint for the Project Reclaim ecosystem expansion.
+- [x] Refine the interactive site map so proposed, active, and verified states are independently represented in filters, legend, and marker styling.
+- [x] Add executed page-level regression tests for the NEXINUS systems diagram and META-MATA opportunity scan, covering their required relationship labels and source-watchboard content.

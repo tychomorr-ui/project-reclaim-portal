@@ -1,7 +1,11 @@
 import { COOKIE_NAME } from "@shared/const";
+import { z } from "zod";
 import { getSessionCookieOptions } from "./_core/cookies";
+import { notifyOwner } from "./_core/notification";
 import { systemRouter } from "./_core/systemRouter";
-import { publicProcedure, router } from "./_core/trpc";
+import { ownerProcedure, protectedProcedure, publicProcedure, router } from "./_core/trpc";
+import { createInquiry, listInquiries, listOpportunities, listProjects, updateInquiryAlertStatus, updateInquiryStatus } from "./db";
+import { inquiryInputSchema } from "./inquiries";
 
 export const appRouter = router({
     // if you need to use socket.io, read and register route in server/_core/index.ts, all api should start with '/api/' so that the gateway can route correctly
@@ -16,13 +20,43 @@ export const appRouter = router({
       } as const;
     }),
   }),
+  owner: router({
+    access: protectedProcedure.query(({ ctx }) => ({
+      isOwner: ctx.user.openId === process.env.OWNER_OPEN_ID,
+    })),
+  }),
+  registry: router({
+    projects: publicProcedure.query(() => listProjects()),
+    opportunities: publicProcedure.query(() => listOpportunities()),
+  }),
+  inquiries: router({
+    create: publicProcedure.input(inquiryInputSchema).mutation(async ({ input }) => {
+      const inquiryId = await createInquiry(input);
 
-  // TODO: add feature routers here, e.g.
-  // todo: router({
-  //   list: protectedProcedure.query(({ ctx }) =>
-  //     db.getUserTodos(ctx.user.id)
-  //   ),
-  // }),
+      const ownerContent = [
+        `${input.type === "partnership" ? "Partnership inquiry" : "Community contact"} from ${input.name}`,
+        `Email: ${input.email}`,
+        input.organization ? `Organization: ${input.organization}` : null,
+        input.focus ? `Interest: ${input.focus}` : null,
+        `Message: ${input.message}`,
+      ].filter(Boolean).join("\n");
+
+      const ownerNotificationSent = await notifyOwner({
+        title: `Project Reclaim: ${input.type === "partnership" ? "partnership inquiry" : "community contact"}`,
+        content: ownerContent,
+      });
+      await updateInquiryAlertStatus(inquiryId, ownerNotificationSent);
+
+      return { success: true, ownerNotificationSent };
+    }),
+    list: ownerProcedure.query(() => listInquiries()),
+    updateStatus: ownerProcedure
+      .input(z.object({ id: z.number().int().positive(), status: z.enum(["new", "reviewing", "responded", "archived"]) }))
+      .mutation(async ({ input }) => {
+        await updateInquiryStatus(input.id, input.status);
+        return { success: true };
+      }),
+  }),
 });
 
 export type AppRouter = typeof appRouter;

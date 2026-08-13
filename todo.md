@@ -1,0 +1,27 @@
+# Project Reclaim TODO
+
+- [x] Create Project Reclaim’s public information architecture and route structure for the landing page, initiative overview, projects, partnerships, opportunities, impact, NEXINUS, and contact pages.
+- [x] Establish a refined, mobile-first visual system with accessible typography, responsive navigation, sticky header, footer, interaction states, and semantic landmark structure.
+- [x] Build the mission-led hero experience with distinct calls to action for agency partners and community members.
+- [x] Present the four core pillars precisely: fire mitigation, wood reclamation, workforce development, and land restoration.
+- [x] Implement a data-driven public projects registry that clearly distinguishes active, planned, completed, and unverified project states without fabricating operating data.
+- [x] Implement the workforce and opportunities experience with roles, training pathways, volunteer participation, and transparent availability states.
+- [x] Build the agency-facing partnership page naming Cal Fire, HUD, Tribal Economic Restoration Alliance, and county bodies exactly as specified, with a secure inquiry form.
+- [x] Build the evidence and impact layer with public-facing metrics, timelines, and downloadable initiative materials sourced from approved project files.
+- [x] Build the NEXINUS ecosystem section using the exact connected-network names NEXINUS and Root.
+- [x] Add secure database-backed contact and partnership inquiry handling with validation, submission confirmation, and in-app owner notification on every successful submission.
+- [x] Implement an owner-only protected administrative dashboard for reviewing and managing all incoming contact and partnership inquiries.
+- [x] Add Vitest coverage for public-data contracts, inquiry validation, protected dashboard access, and notification triggering.
+- [x] Validate the interface at desktop and mobile breakpoints, resolve console and build errors, and review accessibility-critical interaction paths.
+- [ ] Create a final project checkpoint after verifying that all completed checklist items are accurately marked.
+- [ ] Keep third-party transactional email delivery disabled until the site owner explicitly chooses to activate it; retain in-app owner alerts and the protected inquiry dashboard in the meantime.
+- [x] Prioritize the Project Reclaim landing page and deepen the visible connections between its physical mission, operating branches, partner pathways, evidence layer, NEXINUS, and Root before addressing secondary integrations.
+- [x] Replace every public-facing use of “Nexus” with the exact connected-network name “NEXINUS,” including navigation, headings, labels, and descriptions.
+- [x] Implement a clearly sourced evidence timeline and impact-readiness milestones without inventing field metrics.
+- [x] Restrict protected inquiry administration to the actual Project Reclaim site owner identity at both the interface and server-procedure layers.
+- [x] Persist in-app owner-alert delivery status for each inquiry and make notification failure visible to the owner dashboard.
+- [x] Add public registry and opportunity data-contract tests alongside the existing inquiry-access tests.
+- [x] Complete documented desktop and mobile validation across every public route and the owner dashboard, including keyboard-critical navigation and form paths.
+- [x] Run explicit keyboard-path checks for the mobile navigation, public inquiry forms, and owner status controls, then append the observed results to VALIDATION.md.
+- [x] Reset the development console log, re-check the validated routes, and record a clean Project Reclaim application-console result in VALIDATION.md.
+- [x] Strengthen public registry and opportunity Vitest coverage with representative response-shape assertions for all published status, category, location, and verification fields.

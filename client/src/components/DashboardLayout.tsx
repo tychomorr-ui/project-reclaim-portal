@@ -20,16 +20,17 @@ import {
   useSidebar,
 } from "@/components/ui/sidebar";
 import { startLogin } from "@/const";
+import { trpc } from "@/lib/trpc";
 import { useIsMobile } from "@/hooks/useMobile";
-import { LayoutDashboard, LogOut, PanelLeft, Users } from "lucide-react";
+import { Inbox, LayoutDashboard, LogOut, PanelLeft, ShieldCheck } from "lucide-react";
 import { CSSProperties, useEffect, useRef, useState } from "react";
 import { useLocation } from "wouter";
 import { DashboardLayoutSkeleton } from './DashboardLayoutSkeleton';
 import { Button } from "./ui/button";
 
 const menuItems = [
-  { icon: LayoutDashboard, label: "Page 1", path: "/" },
-  { icon: Users, label: "Page 2", path: "/some-path" },
+  { icon: LayoutDashboard, label: "Inquiry overview", path: "/admin" },
+  { icon: Inbox, label: "Inbox", path: "/admin" },
 ];
 
 const SIDEBAR_WIDTH_KEY = "sidebar-width";
@@ -47,6 +48,7 @@ export default function DashboardLayout({
     return saved ? parseInt(saved, 10) : DEFAULT_WIDTH;
   });
   const { loading, user } = useAuth();
+  const ownerAccess = trpc.owner.access.useQuery(undefined, { enabled: Boolean(user), retry: false });
 
   useEffect(() => {
     localStorage.setItem(SIDEBAR_WIDTH_KEY, sidebarWidth.toString());
@@ -75,6 +77,23 @@ export default function DashboardLayout({
           >
             Sign in
           </Button>
+        </div>
+      </div>
+    );
+  }
+
+  if (ownerAccess.isLoading) {
+    return <DashboardLayoutSkeleton />
+  }
+
+  if (!ownerAccess.data?.isOwner) {
+    return (
+      <div className="grid min-h-screen place-items-center bg-[#f4f2e9] px-5">
+        <div className="max-w-md rounded-2xl border border-[#d8d3c2] bg-[#fffdf7] p-8 text-center shadow-sm">
+          <ShieldCheck className="mx-auto size-7 text-[#597248]" />
+          <h1 className="display-type mt-5 text-3xl font-semibold text-[#203023]">Owner access only</h1>
+          <p className="mt-3 text-sm leading-6 text-[#566453]">The Project Reclaim administration workspace is reserved for the site owner.</p>
+          <Button onClick={() => window.location.assign("/")} variant="outline" className="mt-7 rounded-full">Return to portal</Button>
         </div>
       </div>
     );
@@ -168,8 +187,8 @@ function DashboardLayoutContent({
               </button>
               {!isCollapsed ? (
                 <div className="flex items-center gap-2 min-w-0">
-                  <span className="font-semibold tracking-tight truncate">
-                    Navigation
+                    <span className="font-semibold tracking-tight truncate">
+                      Project Reclaim
                   </span>
                 </div>
               ) : null}
@@ -181,7 +200,7 @@ function DashboardLayoutContent({
               {menuItems.map(item => {
                 const isActive = location === item.path;
                 return (
-                  <SidebarMenuItem key={item.path}>
+                  <SidebarMenuItem key={`${item.label}-${item.path}`}>
                     <SidebarMenuButton
                       isActive={isActive}
                       onClick={() => setLocation(item.path)}
@@ -255,7 +274,7 @@ function DashboardLayoutContent({
             </div>
           </div>
         )}
-        <main className="flex-1 p-4">{children}</main>
+          <main className="flex-1 bg-[#f4f2e9] p-4 md:p-6">{children}</main>
       </SidebarInset>
     </>
   );

@@ -1,4 +1,4 @@
-import { int, mysqlEnum, mysqlTable, text, timestamp, varchar } from "drizzle-orm/mysql-core";
+import { boolean, int, mysqlEnum, mysqlTable, text, timestamp, varchar } from "drizzle-orm/mysql-core";
 
 /**
  * Core user table backing auth flow.
@@ -25,4 +25,57 @@ export const users = mysqlTable("users", {
 export type User = typeof users.$inferSelect;
 export type InsertUser = typeof users.$inferInsert;
 
-// TODO: Add your tables here
+export const projects = mysqlTable("projects", {
+  id: int("id").autoincrement().primaryKey(),
+  title: varchar("title", { length: 180 }).notNull(),
+  slug: varchar("slug", { length: 200 }).notNull().unique(),
+  summary: text("summary").notNull(),
+  category: mysqlEnum("category", [
+    "fire_mitigation",
+    "wood_reclamation",
+    "workforce_development",
+    "land_restoration",
+    "community_infrastructure",
+  ]).notNull(),
+  status: mysqlEnum("status", ["active", "planned", "completed", "unverified"]).notNull().default("unverified"),
+  verificationStatus: mysqlEnum("verificationStatus", ["verified", "unverified"]).notNull().default("unverified"),
+  locationLabel: varchar("locationLabel", { length: 200 }),
+  impactMetricLabel: varchar("impactMetricLabel", { length: 160 }),
+  impactMetricValue: varchar("impactMetricValue", { length: 160 }),
+  evidenceUrl: varchar("evidenceUrl", { length: 1024 }),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export const opportunities = mysqlTable("opportunities", {
+  id: int("id").autoincrement().primaryKey(),
+  title: varchar("title", { length: 180 }).notNull(),
+  summary: text("summary").notNull(),
+  type: mysqlEnum("type", ["job", "contract", "training", "internship", "apprenticeship", "volunteer"]).notNull(),
+  status: mysqlEnum("status", ["open", "coming_soon", "filled", "completed", "unverified"]).notNull().default("unverified"),
+  organization: varchar("organization", { length: 180 }),
+  locationLabel: varchar("locationLabel", { length: 200 }),
+  applicationMethod: varchar("applicationMethod", { length: 600 }),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export const inquiries = mysqlTable("inquiries", {
+  id: int("id").autoincrement().primaryKey(),
+  type: mysqlEnum("type", ["contact", "partnership"]).notNull(),
+  name: varchar("name", { length: 120 }).notNull(),
+  email: varchar("email", { length: 320 }).notNull(),
+  organization: varchar("organization", { length: 180 }),
+  phone: varchar("phone", { length: 40 }),
+  focus: varchar("focus", { length: 180 }),
+  message: text("message").notNull(),
+  status: mysqlEnum("status", ["new", "reviewing", "responded", "archived"]).notNull().default("new"),
+  emailNotificationSent: boolean("emailNotificationSent").notNull().default(false),
+  ownerNotificationSent: boolean("ownerNotificationSent").notNull().default(false),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type Project = typeof projects.$inferSelect;
+export type Opportunity = typeof opportunities.$inferSelect;
+export type Inquiry = typeof inquiries.$inferSelect;

@@ -1,6 +1,6 @@
 import { desc, eq } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
-import { inquiries, InsertUser, opportunities, projects, users } from "../drizzle/schema";
+import { inquiries, InsertUser, opportunities, products, projects, users } from "../drizzle/schema";
 import type { InquiryInput } from "./inquiries";
 import { ENV } from "./_core/env";
 
@@ -39,6 +39,7 @@ export async function getUserByOpenId(openId: string) {
 
 export async function listProjects() { const db = await getDb(); if (!db) throw new Error("Database is unavailable."); return db.select().from(projects).orderBy(desc(projects.updatedAt)); }
 export async function listOpportunities() { const db = await getDb(); if (!db) throw new Error("Database is unavailable."); return db.select().from(opportunities).orderBy(desc(opportunities.updatedAt)); }
+export async function listProducts() { const db = await getDb(); if (!db) throw new Error("Database is unavailable."); return db.select().from(products).orderBy(desc(products.updatedAt)); }
 
 export async function createInquiry(input: InquiryInput) {
   const db = await getDb();
@@ -51,7 +52,9 @@ export async function createInquiry(input: InquiryInput) {
     phone: input.phone || null,
     focus: input.focus || null,
     partnerCategory: input.partnerCategory || null,
+    businessCategory: input.businessCategory || null,
     siteContext: input.siteContext || null,
+    serviceArea: input.serviceArea || null,
     message: input.message,
   });
   return Number((result as unknown as { insertId?: number }).insertId);

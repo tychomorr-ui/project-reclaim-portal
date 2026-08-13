@@ -31,6 +31,16 @@
 - [x] Create a clearly labeled META-MATA opportunity scan that explores ethical reintegration, land reuse, material recovery, local procurement, training, and stewardship models without presenting unverified programs or partnerships as active.
 - [x] Add safe, respectful workforce pathways for people returning from incarceration, people experiencing homelessness, people in recovery, and people navigating mental-health barriers, emphasizing voluntary participation, paid work, training, and safeguards.
 - [x] Add automated coverage and responsive validation for the interactive map, tailored partner form selections, systems diagram, and META-MATA content.
-- [ ] Save a validated portal checkpoint for the Project Reclaim ecosystem expansion.
+- [x] Save a validated portal checkpoint for the Project Reclaim ecosystem expansion.
 - [x] Refine the interactive site map so proposed, active, and verified states are independently represented in filters, legend, and marker styling.
 - [x] Add executed page-level regression tests for the NEXINUS systems diagram and META-MATA opportunity scan, covering their required relationship labels and source-watchboard content.
+- [x] Add a data-driven product showcase for participant-made reclaimed-wood furniture, lumber, and material pathways without inventing inventory, prices, or purchaser claims.
+- [x] Add a dedicated skills and training section covering carpentry apprenticeships, hand-tool craft, life skills, field safety, and transparent job, contract, subcontract, and subsidiary pathways.
+- [x] Add a local business partner desk with structured sign-up for equipment vendors, contractors, arborists, forestry teams, material suppliers, and service providers.
+- [x] Upgrade the public map architecture for future parcel-boundary, public-land, and site-context overlays using licensed or authorized data sources only; do not claim or reproduce proprietary OnX Hunt data.
+- [x] Add a legal-and-clinical readiness section that frames co-occurring mental-health and substance-use support, therapy, probation/parole, justice, and corrections participation as qualified partner pathways—not active services or confirmed relationships.
+- [x] Research and document California-facing behavioral-health, privacy, licensing, correctional-reentry, and geospatial data-readiness requirements with source citations and a professional-review checklist.
+- [ ] Verify new products, training, local-business intake, map readiness, and disclosure paths with automated tests, responsive reviews, and a saved checkpoint.
+- [x] Add an explicit professional-review checklist to the clinical and legal readiness document covering legal, clinical, privacy, corrections, labor, insurance, safety, and geospatial data-rights review.
+- [x] Complete and document desktop and mobile visual validation for the Products, Skills, Local Business, Readiness, and updated Projects routes.
+- [x] Add the observed desktop and mobile route-validation outcomes, including the map-overlay readiness note, to the persistent Project Reclaim validation record.

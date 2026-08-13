@@ -46,6 +46,20 @@ export const opportunities = mysqlTable("opportunities", {
   updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
 });
 
+export const products = mysqlTable("products", {
+  id: int("id").autoincrement().primaryKey(),
+  title: varchar("title", { length: 180 }).notNull(),
+  summary: text("summary").notNull(),
+  category: mysqlEnum("category", ["furniture", "lumber", "architectural_stock", "repair", "firewood", "chips_biomass", "other"]).notNull(),
+  status: mysqlEnum("status", ["available", "coming_soon", "reserved", "sold", "unverified"]).notNull().default("unverified"),
+  materialLabel: varchar("materialLabel", { length: 180 }),
+  originProjectId: int("originProjectId"),
+  imageUrl: varchar("imageUrl", { length: 1024 }),
+  availabilityNote: varchar("availabilityNote", { length: 600 }),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
 export const inquiries = mysqlTable("inquiries", {
   id: int("id").autoincrement().primaryKey(),
   type: mysqlEnum("type", ["contact", "partnership"]).notNull(),
@@ -55,7 +69,9 @@ export const inquiries = mysqlTable("inquiries", {
   phone: varchar("phone", { length: 40 }),
   focus: varchar("focus", { length: 180 }),
   partnerCategory: mysqlEnum("partnerCategory", ["cal_fire", "hud", "terra", "tribal_ecorestoration_alliance", "county_or_local_government", "tribal_government", "contractor_or_forestry", "equipment_or_material_partner", "workforce_or_support_provider", "other"]),
+  businessCategory: mysqlEnum("businessCategory", ["equipment_vendor", "contractor", "arborist_or_forestry", "material_supplier", "trucking_or_hauling", "repair_or_fabrication", "professional_services", "other"]),
   siteContext: varchar("siteContext", { length: 240 }),
+  serviceArea: varchar("serviceArea", { length: 180 }),
   message: text("message").notNull(),
   status: mysqlEnum("status", ["new", "reviewing", "responded", "archived"]).notNull().default("new"),
   emailNotificationSent: boolean("emailNotificationSent").notNull().default(false),
@@ -66,4 +82,5 @@ export const inquiries = mysqlTable("inquiries", {
 
 export type Project = typeof projects.$inferSelect;
 export type Opportunity = typeof opportunities.$inferSelect;
+export type Product = typeof products.$inferSelect;
 export type Inquiry = typeof inquiries.$inferSelect;

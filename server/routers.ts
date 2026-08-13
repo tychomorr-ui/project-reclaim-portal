@@ -4,7 +4,7 @@ import { getSessionCookieOptions } from "./_core/cookies";
 import { notifyOwner } from "./_core/notification";
 import { systemRouter } from "./_core/systemRouter";
 import { ownerProcedure, protectedProcedure, publicProcedure, router } from "./_core/trpc";
-import { createInquiry, listInquiries, listOpportunities, listProjects, updateInquiryAlertStatus, updateInquiryStatus } from "./db";
+import { createInquiry, listInquiries, listOpportunities, listProducts, listProjects, updateInquiryAlertStatus, updateInquiryStatus } from "./db";
 import { inquiryInputSchema } from "./inquiries";
 
 export const appRouter = router({
@@ -14,7 +14,7 @@ export const appRouter = router({
     logout: publicProcedure.mutation(({ ctx }) => { const cookieOptions = getSessionCookieOptions(ctx.req); ctx.res.clearCookie(COOKIE_NAME, { ...cookieOptions, maxAge: -1 }); return { success: true } as const; }),
   }),
   owner: router({ access: protectedProcedure.query(({ ctx }) => ({ isOwner: ctx.user.openId === process.env.OWNER_OPEN_ID })) }),
-  registry: router({ projects: publicProcedure.query(() => listProjects()), opportunities: publicProcedure.query(() => listOpportunities()) }),
+  registry: router({ projects: publicProcedure.query(() => listProjects()), opportunities: publicProcedure.query(() => listOpportunities()), products: publicProcedure.query(() => listProducts()) }),
   inquiries: router({
     create: publicProcedure.input(inquiryInputSchema).mutation(async ({ input }) => {
       const inquiryId = await createInquiry(input);
@@ -23,7 +23,9 @@ export const appRouter = router({
         `Email: ${input.email}`,
         input.organization ? `Organization: ${input.organization}` : null,
         input.partnerCategory ? `Partner route: ${input.partnerCategory.replaceAll("_", " ")}` : null,
+        input.businessCategory ? `Business role: ${input.businessCategory.replaceAll("_", " ")}` : null,
         input.siteContext ? `Site context: ${input.siteContext}` : null,
+        input.serviceArea ? `Service area: ${input.serviceArea}` : null,
         input.focus ? `Interest: ${input.focus}` : null,
         `Message: ${input.message}`,
       ].filter(Boolean).join("\n");

@@ -8,6 +8,12 @@ The landing page, initiative overview, project registry, partnership page, workf
 
 The owner workspace was reviewed at desktop and mobile breakpoints. Its query procedures are restricted to the authenticated `OWNER_OPEN_ID` on the server, and its interface confirms owner access only after the protected access query succeeds. The inquiry list, filtering controls, status select, alert-status marker, and empty state all render at both breakpoints.
 
+## Product, Skills, Local-Business, Readiness, and Map Expansion
+
+The `/products`, `/skills`, `/local-business`, `/readiness`, and updated `/projects` routes were reviewed at desktop (1280 × 720) and mobile (375 × 812) breakpoints. The product catalog correctly renders a data-driven empty state rather than fictional inventory. The skills page maintains readable sequence cards and work-pathway framing at both widths. The local-business sign-up retains labelled controls, usable field spacing, and a clear non-commitment notice on mobile. The readiness page preserves its clinical, justice, privacy, and legal boundary language at both widths.
+
+The updated project map retains independent active, proposed, and verified controls and displays the context-layer panel. During the review, the regional map service was unavailable, and the route presented its designed fallback without losing registry controls or making a false parcel/public-land claim. The readiness panel accurately identifies BLM and California public-data sources as future source-reviewed overlays, labels parcel data as licensing/accuracy dependent, and confirms that OnX Hunt is not connected.
+
 ## Accessibility-Critical Paths
 
 The portal uses semantic navigation landmarks, route links, native buttons, labelled form inputs, labelled text areas, form validation requirements, a labelled mobile navigation control, and a labelled status selector. Visible focus treatment is supplied through the shared theme tokens. Contact and partnership form fields are keyboard reachable in document order, and their submit controls are native buttons.
@@ -18,4 +24,4 @@ The mobile menu trigger is a native `<button>` with both `aria-label` and `aria-
 
 ## Automated and Runtime Checks
 
-`pnpm check` completed successfully. `pnpm test` completed successfully with five tests across the authentication and inquiry suites, covering validation, public registry and opportunity response contracts, owner-alert triggering, and rejected non-owner inquiry access. The development console was reset and the landing, partnership, contact, and owner-dashboard routes were reloaded. No Project Reclaim application error was recorded; the only warning and rejection observed came from the installed MetaMask browser extension while it attempted to restore its own session, which is outside the portal application.
+`pnpm check` completed successfully. `pnpm test` completed successfully with fourteen tests across five suites. Coverage includes authentication, public registry and product contracts, inquiry validation, local-business intake, owner-alert triggering, owner-only access, independent map states, NEXINUS and META-MATA page content, and skills/readiness page content. The development console was reset and the landing, partnership, contact, and owner-dashboard routes were reloaded. No Project Reclaim application error was recorded; the only warning and rejection observed came from the installed MetaMask browser extension while it attempted to restore its own session, which is outside the portal application.

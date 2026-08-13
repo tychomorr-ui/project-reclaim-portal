@@ -1,12 +1,13 @@
 import { describe, expect, it, vi } from "vitest";
 
 const mocks = vi.hoisted(() => ({
-  createFieldEvidencePilot: vi.fn(), createImpactMetric: vi.fn(), createInquiry: vi.fn(), createReferralResource: vi.fn(), createStory: vi.fn(),
-  listInquiries: vi.fn(), listOpportunities: vi.fn(), listOwnerFieldEvidencePilots: vi.fn(), listOwnerImpactMetrics: vi.fn(), listOwnerReferralResources: vi.fn(), listOwnerStories: vi.fn(), listProducts: vi.fn(), listProjects: vi.fn(), listPublicFieldEvidencePilots: vi.fn(), listPublicImpactMetrics: vi.fn(), listPublicReferralResources: vi.fn(), listPublishedStories: vi.fn(),
+  createEvidenceAsset: vi.fn(), createFieldEvidencePilot: vi.fn(), createImpactMetric: vi.fn(), createInquiry: vi.fn(), createProvenancePacket: vi.fn(), createReferralResource: vi.fn(), createStory: vi.fn(),
+  listInquiries: vi.fn(), listOpportunities: vi.fn(), listOwnerEvidenceAssets: vi.fn(), listOwnerFieldEvidencePilots: vi.fn(), listOwnerImpactMetrics: vi.fn(), listOwnerProvenancePackets: vi.fn(), listOwnerReferralResources: vi.fn(), listOwnerStories: vi.fn(), listProducts: vi.fn(), listProjects: vi.fn(), listPublicFieldEvidencePilots: vi.fn(), listPublicImpactMetrics: vi.fn(), listPublicReferralResources: vi.fn(), listPublishedStories: vi.fn(),
   updateFieldEvidencePilot: vi.fn(), updateImpactMetric: vi.fn(), updateInquiryAlertStatus: vi.fn(), updateInquiryStatus: vi.fn(), updateReferralResource: vi.fn(), updateStory: vi.fn(),
 }));
 vi.mock("./db", () => mocks);
 vi.mock("./_core/notification", () => ({ notifyOwner: vi.fn() }));
+vi.mock("./storage", () => ({ storagePut: vi.fn().mockResolvedValue({ key: "project-reclaim/evidence/test.pdf", url: "/manus-storage/project-reclaim/evidence/test.pdf" }) }));
 
 import { appRouter } from "./routers";
 import type { TrpcContext } from "./_core/context";
@@ -43,5 +44,15 @@ describe("Project Reclaim operational governance", () => {
     const visitor = appRouter.createCaller(visitorContext);
     await expect(visitor.registry.resources()).resolves.toEqual([expect.objectContaining({ organizationName: "Public Resource", publicUrl: "https://example.org", nextReviewAt: expect.any(Date) })]);
     await expect(visitor.registry.fieldPilots()).resolves.toEqual([expect.objectContaining({ title: "Approved public pilot summary", generalArea: "General service area", publicSummary: "Approved public release text." })]);
+  });
+
+  it("keeps evidence files and provenance packets owner-only, while preparing a local digest without external verification", async () => {
+    await expect(appRouter.createCaller(visitorContext).governance.evidenceAssets.list()).rejects.toMatchObject({ code: "FORBIDDEN" });
+    await expect(appRouter.createCaller(memberContext).governance.provenancePackets.list()).rejects.toMatchObject({ code: "FORBIDDEN" });
+    const owner = appRouter.createCaller(ownerContext);
+    await expect(owner.governance.evidenceAssets.upload({ filename: "evidence.pdf", fileBase64: "aGVsbG8gaGVsbG8gaGVsbG8=", contentType: "application/pdf", title: "Private pilot evidence", publicSummary: "", evidenceType: "document", fieldPilotId: undefined, visibility: "private", capturedAt: undefined, reviewedAt: undefined, reviewedBy: "", publicReleasedAt: undefined })).resolves.toEqual({ success: true, action: "uploaded" });
+    const packet = await owner.governance.provenancePackets.prepare({ title: "Approved public summary", publicSummary: "A public-safe summary long enough to prepare a local integrity packet.", fieldPilotId: undefined, reviewedAt: undefined, reviewedBy: "Project Reclaim owner" });
+    expect(packet).toMatchObject({ success: true, action: "prepared", contentDigest: expect.stringMatching(/^[a-f0-9]{64}$/) });
+    expect(mocks.createProvenancePacket).toHaveBeenCalledWith(expect.objectContaining({ status: "prepared", publicReleaseStatus: "not_approved", digestAlgorithm: "SHA-256" }));
   });
 });

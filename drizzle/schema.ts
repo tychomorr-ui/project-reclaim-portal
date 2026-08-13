@@ -152,6 +152,41 @@ export const fieldEvidencePilots = mysqlTable("field_evidence_pilots", {
   updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
 });
 
+export const evidenceAssets = mysqlTable("evidence_assets", {
+  id: int("id").autoincrement().primaryKey(),
+  fieldPilotId: int("fieldPilotId"),
+  title: varchar("title", { length: 220 }).notNull(),
+  publicSummary: text("publicSummary"),
+  evidenceType: mysqlEnum("evidenceType", ["photo", "before_after", "document", "work_record", "site_authority", "other"]).notNull().default("other"),
+  contentType: varchar("contentType", { length: 160 }).notNull(),
+  storageKey: varchar("storageKey", { length: 1024 }).notNull(),
+  storageUrl: varchar("storageUrl", { length: 1024 }).notNull(),
+  visibility: mysqlEnum("visibility", ["private", "public_approved"]).notNull().default("private"),
+  capturedAt: timestamp("capturedAt"),
+  reviewedAt: timestamp("reviewedAt"),
+  reviewedBy: varchar("reviewedBy", { length: 180 }),
+  publicReleasedAt: timestamp("publicReleasedAt"),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export const provenancePackets = mysqlTable("provenance_packets", {
+  id: int("id").autoincrement().primaryKey(),
+  fieldPilotId: int("fieldPilotId"),
+  title: varchar("title", { length: 220 }).notNull(),
+  publicSummary: text("publicSummary").notNull(),
+  contentDigest: varchar("contentDigest", { length: 160 }).notNull(),
+  digestAlgorithm: varchar("digestAlgorithm", { length: 60 }).notNull().default("SHA-256"),
+  status: mysqlEnum("status", ["prepared", "integration_review", "verified_external", "retired"]).notNull().default("prepared"),
+  externalReference: varchar("externalReference", { length: 1024 }),
+  reviewedAt: timestamp("reviewedAt"),
+  reviewedBy: varchar("reviewedBy", { length: 180 }),
+  publicReleaseStatus: mysqlEnum("publicReleaseStatus", ["not_approved", "approved", "retired"]).notNull().default("not_approved"),
+  publicReleasedAt: timestamp("publicReleasedAt"),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
 export type Project = typeof projects.$inferSelect;
 export type Opportunity = typeof opportunities.$inferSelect;
 export type Product = typeof products.$inferSelect;
@@ -160,3 +195,5 @@ export type ImpactMetric = typeof impactMetrics.$inferSelect;
 export type Story = typeof stories.$inferSelect;
 export type ReferralResource = typeof referralResources.$inferSelect;
 export type FieldEvidencePilot = typeof fieldEvidencePilots.$inferSelect;
+export type EvidenceAsset = typeof evidenceAssets.$inferSelect;
+export type ProvenancePacket = typeof provenancePackets.$inferSelect;

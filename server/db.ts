@@ -1,7 +1,7 @@
 import { and, desc, eq, gte, inArray, ne } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
-import { fieldEvidencePilots, impactMetrics, inquiries, InsertUser, opportunities, products, projects, referralResources, stories, users } from "../drizzle/schema";
-import type { FieldEvidencePilotInput, ImpactMetricInput, ReferralResourceInput, StoryInput } from "./governance";
+import { evidenceAssets, fieldEvidencePilots, impactMetrics, inquiries, InsertUser, opportunities, products, projects, provenancePackets, referralResources, stories, users } from "../drizzle/schema";
+import type { EvidenceAssetInput, FieldEvidencePilotInput, ImpactMetricInput, ProvenancePacketInput, ReferralResourceInput, StoryInput } from "./governance";
 import type { InquiryInput } from "./inquiries";
 import { ENV } from "./_core/env";
 
@@ -79,6 +79,12 @@ export async function listPublicFieldEvidencePilots() { const db = await getDb()
 export async function listOwnerFieldEvidencePilots() { const db = await getDb(); if (!db) throw new Error("Database is unavailable."); return db.select().from(fieldEvidencePilots).orderBy(desc(fieldEvidencePilots.updatedAt)); }
 export async function createFieldEvidencePilot(input: FieldEvidencePilotInput) { const db = await getDb(); if (!db) throw new Error("Database is unavailable."); const result = await db.insert(fieldEvidencePilots).values({ ...input, generalArea: input.generalArea || null, authorizationReference: input.authorizationReference || null, crewLabel: input.crewLabel || null, materialPathway: input.materialPathway || null, evidenceSummary: input.evidenceSummary || null, evidenceUrl: input.evidenceUrl || null, publicSummary: input.publicSummary || null, authorizedAt: input.authorizedAt || null, reviewedAt: input.reviewedAt || null, publicReleasedAt: input.publicReleasedAt || null, reviewedBy: input.reviewedBy || null }); return Number((result as unknown as { insertId?: number }).insertId); }
 export async function updateFieldEvidencePilot(id: number, input: FieldEvidencePilotInput) { const db = await getDb(); if (!db) throw new Error("Database is unavailable."); await db.update(fieldEvidencePilots).set({ ...input, generalArea: input.generalArea || null, authorizationReference: input.authorizationReference || null, crewLabel: input.crewLabel || null, materialPathway: input.materialPathway || null, evidenceSummary: input.evidenceSummary || null, evidenceUrl: input.evidenceUrl || null, publicSummary: input.publicSummary || null, authorizedAt: input.authorizedAt || null, reviewedAt: input.reviewedAt || null, publicReleasedAt: input.publicReleasedAt || null, reviewedBy: input.reviewedBy || null }).where(eq(fieldEvidencePilots.id, id)); }
+
+export async function listOwnerEvidenceAssets() { const db = await getDb(); if (!db) throw new Error("Database is unavailable."); return db.select().from(evidenceAssets).orderBy(desc(evidenceAssets.updatedAt)); }
+export async function createEvidenceAsset(input: EvidenceAssetInput) { const db = await getDb(); if (!db) throw new Error("Database is unavailable."); const result = await db.insert(evidenceAssets).values({ ...input, fieldPilotId: input.fieldPilotId || null, publicSummary: input.publicSummary || null, capturedAt: input.capturedAt || null, reviewedAt: input.reviewedAt || null, reviewedBy: input.reviewedBy || null, publicReleasedAt: input.publicReleasedAt || null }); return Number((result as unknown as { insertId?: number }).insertId); }
+
+export async function listOwnerProvenancePackets() { const db = await getDb(); if (!db) throw new Error("Database is unavailable."); return db.select().from(provenancePackets).orderBy(desc(provenancePackets.updatedAt)); }
+export async function createProvenancePacket(input: ProvenancePacketInput) { const db = await getDb(); if (!db) throw new Error("Database is unavailable."); const result = await db.insert(provenancePackets).values({ ...input, fieldPilotId: input.fieldPilotId || null, externalReference: input.externalReference || null, reviewedAt: input.reviewedAt || null, reviewedBy: input.reviewedBy || null, publicReleasedAt: input.publicReleasedAt || null }); return Number((result as unknown as { insertId?: number }).insertId); }
 
 export async function createInquiry(input: InquiryInput) {
   const db = await getDb();

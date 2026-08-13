@@ -22,7 +22,7 @@ import {
 import { startLogin } from "@/const";
 import { trpc } from "@/lib/trpc";
 import { useIsMobile } from "@/hooks/useMobile";
-import { ClipboardCheck, Inbox, LayoutDashboard, LogOut, PanelLeft, ShieldCheck } from "lucide-react";
+import { ClipboardCheck, FileUp, Inbox, LayoutDashboard, LogOut, PanelLeft, ShieldCheck } from "lucide-react";
 import { CSSProperties, useEffect, useRef, useState } from "react";
 import { useLocation } from "wouter";
 import { DashboardLayoutSkeleton } from './DashboardLayoutSkeleton';
@@ -32,6 +32,7 @@ const menuItems = [
   { icon: LayoutDashboard, label: "Inquiry overview", path: "/admin" },
   { icon: Inbox, label: "Inbox", path: "/admin" },
   { icon: ClipboardCheck, label: "Evidence & release desk", path: "/admin/operations" },
+  { icon: FileUp, label: "Evidence vault", path: "/admin/evidence" },
 ];
 
 const SIDEBAR_WIDTH_KEY = "sidebar-width";

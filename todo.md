@@ -80,4 +80,4 @@
 - [x] Research and document responsible credential, residential-program, work-record, and blockchain/provenance integration boundaries, including an assessment of UniversalTruth integration without asserting an active blockchain, Truth Ledger, Truth Coin, Truth Substrate, or Bitcoin connection before technical and legal review.
 - [x] Inspect UniversalTruth’s public integration surface and current connector configuration, then implement only a non-financial, non-custodial provenance-readiness boundary appropriate for Project Reclaim.
 - [x] Add automated coverage and responsive validation for scroll-to-top navigation, inclusive/residential disclosures, detailed pathway interactions, roadmap status, and provenance readiness, then save a validated checkpoint.
-- [ ] Save the validated scroll-reset, residential-readiness, detailed skills, roadmap, controlled-evidence, and provenance-readiness expansion as a restore-ready Project Reclaim checkpoint.
+- [x] Save the validated scroll-reset, residential-readiness, detailed skills, roadmap, controlled-evidence, and provenance-readiness expansion as a restore-ready Project Reclaim checkpoint.

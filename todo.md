@@ -49,10 +49,16 @@
 - [x] Extend the local-business partner intake with equipment-type and contractor-specialty dropdowns, validated API fields, and owner-dashboard visibility.
 - [x] Research authoritative safety and practical market benchmarks, then prepare a source-aware 100-person startup equipment, vehicle, tool, shop, field, PPE, and supply proposal with explicit assumptions and contingency treatment.
 - [x] Add automated coverage and responsive validation for the catalog controls, map controls/tooltips, extended local-business intake, and startup-package record.
-- [ ] Save a validated checkpoint for the Project Reclaim exploration and startup-package expansion.
+- [x] Save a validated checkpoint for the Project Reclaim exploration and startup-package expansion.
 - [x] Add executed regression coverage for BLM-context and site-tooltip interaction states, then document the map-control validation outcome.
 - [x] Add focused local-business intake and owner-dashboard regression coverage for equipment-type and contractor-specialty selections, plus a route-level verification record.
 - [x] Add executable site-tooltip interaction-state coverage beyond BLM message states and verify the BLM toggle remains explicitly non-authoritative.
 - [x] Re-read and confirm the persisted validation record includes the final Products, Projects, Local Business, and Admin exploration-control outcomes.
 - [x] Review the startup-package proposal for source links, assumptions, calculated total, exclusions, and procurement gates, then record the verification outcome.
 - [x] Confirm that the startup-package verification outcome is durably present in the validation record before checkpointing.
+- [x] Add a landing-page impact metrics dashboard for participants, acres restored, and local-business partnerships, with verified, pending, and methodology-aware states rather than invented counts.
+- [x] Add a dedicated clinical and support-services page describing only confirmed services and qualified-provider partnership pathways for mental health, substance-use, life skills, care coordination, and crisis escalation.
+- [x] Add a consent-first success-stories and progress-update framework that accepts real approved participant stories later while never fabricating testimonials, ratings, or outcomes.
+- [x] Create a prioritized Project Reclaim upgrade roadmap spanning data governance, metric verification, participant consent, referrals, safety, project operations, local procurement, and partner onboarding.
+- [x] Research and document privacy, consent, measurement, behavioral-health partnership, and support-services readiness boundaries for responsible public presentation.
+- [x] Add automated coverage and responsive validation for the impact dashboard, services page, consent-first story framework, and upgrade roadmap, then save a validated checkpoint.

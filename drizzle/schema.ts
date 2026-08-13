@@ -82,7 +82,38 @@ export const inquiries = mysqlTable("inquiries", {
   updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
 });
 
+export const impactMetrics = mysqlTable("impact_metrics", {
+  id: int("id").autoincrement().primaryKey(),
+  metricKey: mysqlEnum("metricKey", ["participants", "acres_restored", "local_business_partnerships"]).notNull(),
+  value: decimal("value", { precision: 14, scale: 2 }),
+  unit: varchar("unit", { length: 80 }).notNull(),
+  verificationStatus: mysqlEnum("verificationStatus", ["pending", "verified", "superseded"]).notNull().default("pending"),
+  sourceTitle: varchar("sourceTitle", { length: 240 }),
+  sourceUrl: varchar("sourceUrl", { length: 1024 }),
+  methodologyNote: text("methodologyNote"),
+  dataAsOf: timestamp("dataAsOf"),
+  verifiedAt: timestamp("verifiedAt"),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export const stories = mysqlTable("stories", {
+  id: int("id").autoincrement().primaryKey(),
+  title: varchar("title", { length: 220 }).notNull(),
+  excerpt: text("excerpt").notNull(),
+  category: mysqlEnum("category", ["work_pathway", "training", "stewardship", "community_contribution", "other"]).notNull().default("other"),
+  attribution: varchar("attribution", { length: 180 }),
+  consentStatus: mysqlEnum("consentStatus", ["pending", "approved", "withdrawn"]).notNull().default("pending"),
+  publicationStatus: mysqlEnum("publicationStatus", ["draft", "published", "retired"]).notNull().default("draft"),
+  consentReviewedAt: timestamp("consentReviewedAt"),
+  publishedAt: timestamp("publishedAt"),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
 export type Project = typeof projects.$inferSelect;
 export type Opportunity = typeof opportunities.$inferSelect;
 export type Product = typeof products.$inferSelect;
 export type Inquiry = typeof inquiries.$inferSelect;
+export type ImpactMetric = typeof impactMetrics.$inferSelect;
+export type Story = typeof stories.$inferSelect;

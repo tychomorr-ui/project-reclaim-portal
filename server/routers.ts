@@ -4,7 +4,7 @@ import { getSessionCookieOptions } from "./_core/cookies";
 import { notifyOwner } from "./_core/notification";
 import { systemRouter } from "./_core/systemRouter";
 import { ownerProcedure, protectedProcedure, publicProcedure, router } from "./_core/trpc";
-import { createInquiry, listInquiries, listOpportunities, listProducts, listProjects, updateInquiryAlertStatus, updateInquiryStatus } from "./db";
+import { createInquiry, listInquiries, listOpportunities, listProducts, listProjects, listPublicImpactMetrics, listPublishedStories, updateInquiryAlertStatus, updateInquiryStatus } from "./db";
 import { inquiryInputSchema } from "./inquiries";
 
 export const appRouter = router({
@@ -14,7 +14,13 @@ export const appRouter = router({
     logout: publicProcedure.mutation(({ ctx }) => { const cookieOptions = getSessionCookieOptions(ctx.req); ctx.res.clearCookie(COOKIE_NAME, { ...cookieOptions, maxAge: -1 }); return { success: true } as const; }),
   }),
   owner: router({ access: protectedProcedure.query(({ ctx }) => ({ isOwner: ctx.user.openId === process.env.OWNER_OPEN_ID })) }),
-  registry: router({ projects: publicProcedure.query(() => listProjects()), opportunities: publicProcedure.query(() => listOpportunities()), products: publicProcedure.query(() => listProducts()) }),
+  registry: router({
+    projects: publicProcedure.query(() => listProjects()),
+    opportunities: publicProcedure.query(() => listOpportunities()),
+    products: publicProcedure.query(() => listProducts()),
+    impactMetrics: publicProcedure.query(() => listPublicImpactMetrics()),
+    stories: publicProcedure.query(() => listPublishedStories()),
+  }),
   inquiries: router({
     create: publicProcedure.input(inquiryInputSchema).mutation(async ({ input }) => {
       const inquiryId = await createInquiry(input);

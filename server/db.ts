@@ -1,6 +1,6 @@
-import { desc, eq } from "drizzle-orm";
+import { and, desc, eq, ne } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
-import { inquiries, InsertUser, opportunities, products, projects, users } from "../drizzle/schema";
+import { impactMetrics, inquiries, InsertUser, opportunities, products, projects, stories, users } from "../drizzle/schema";
 import type { InquiryInput } from "./inquiries";
 import { ENV } from "./_core/env";
 
@@ -44,6 +44,21 @@ export async function listProducts() {
   if (!db) throw new Error("Database is unavailable.");
   const rows = await db.select({ product: products, originProjectTitle: projects.title, originProjectCategory: projects.category }).from(products).leftJoin(projects, eq(products.originProjectId, projects.id)).orderBy(desc(products.updatedAt));
   return rows.map(({ product, originProjectTitle, originProjectCategory }) => ({ ...product, originProjectTitle: originProjectTitle ?? null, originProjectCategory: originProjectCategory ?? null }));
+}
+
+export async function listPublicImpactMetrics() {
+  const db = await getDb();
+  if (!db) throw new Error("Database is unavailable.");
+  const rows = await db.select().from(impactMetrics).where(ne(impactMetrics.verificationStatus, "superseded")).orderBy(desc(impactMetrics.dataAsOf), desc(impactMetrics.updatedAt));
+  const newestByMetric = new Map<string, typeof rows[number]>();
+  rows.forEach((row) => { if (!newestByMetric.has(row.metricKey)) newestByMetric.set(row.metricKey, row); });
+  return Array.from(newestByMetric.values());
+}
+
+export async function listPublishedStories() {
+  const db = await getDb();
+  if (!db) throw new Error("Database is unavailable.");
+  return db.select().from(stories).where(and(eq(stories.consentStatus, "approved"), eq(stories.publicationStatus, "published"))).orderBy(desc(stories.publishedAt), desc(stories.updatedAt));
 }
 
 export async function createInquiry(input: InquiryInput) {

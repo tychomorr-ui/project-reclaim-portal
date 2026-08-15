@@ -68,3 +68,55 @@ Before creating a metric, publishing a story, listing a resource, or moving a fi
 [1]: https://www.cdc.gov/evaluation/php/evaluation-framework-action-guide/step-4-gather-credible-evidence.html "CDC — Step 4: Gather Credible Evidence"
 [2]: https://www.dhcs.ca.gov/data-sharing-and-confidentiality-faqs/ "California DHCS — Data Sharing and Confidentiality FAQs"
 [3]: https://988lifeline.org/ "988 Suicide & Crisis Lifeline"
+
+
+## Meta-Compound Expansion: Two-Site Governance
+
+**Reference date:** August 15, 2026 (Pacific Time). The two-site hybrid model remains a planning architecture: a vineyard-style residential and land-stewardship campus paired with a Clearlake operations, materials, and field-school hub. The portal records leads and release gates; it does not establish property control, a licensed residence, or active operations.
+
+> **Release rule:** no property, participant, clinical, supervision, title, code, safety, or partner claim becomes public until the responsible source, reviewer, consent or authorization basis, and release state are recorded.
+
+## Property Diligence Gate Register
+
+The current property dashboard distinguishes a public lead from broker-confirmed, title-reviewed, code-reviewed, safety-reviewed, and board-ready states. For the vineyard campus lead, the immediate task is to identify the exact parcel, owner or authorized broker, current use, access, water, septic, fire access, occupancy, and restrictions. For **3360 Old Highway 53 in Clearlake**, public listing material may describe a commercial or operational context, but current listing status, title, zoning, occupancy, suitability, and financing conclusions require current broker, county, title, and professional records.
+
+| Gate | Required evidence | Responsible reviewer | Public state |
+|---|---|---|---|
+| Lead identity | Address or parcel reference, source URL, and source-as-of date | Property lead | Planning candidate |
+| Broker / owner authority | Current listing, broker contact, or owner authorization | Broker / counsel | Not yet verified |
+| Title | Current title commitment or recorded-document review, easements, liens, and restrictions | Title company / counsel | Not yet reviewed |
+| Zoning and use | County zoning, permitted use, occupancy, building and land-development requirements | Planning / building professional | Not yet reviewed |
+| Water and wastewater | Well, water service, septic or other wastewater records, site evaluation | Licensed / county reviewer | Not yet reviewed |
+| Fire and life safety | Access, ingress/egress, defensible space, alarms, exits, emergency plan, hazard assessment | Fire / safety professional | Not yet cleared |
+| Environmental and site hazards | Flood, wildfire, hazardous materials, trees, soil, structural, mold, or asbestos review as applicable | Qualified professionals | Not yet cleared |
+| Insurance and financing | Property, general liability, workers’ compensation, auto, professional, participant, and residential coverage | Broker / counsel | Not yet bound |
+| Board decision | Written go / no-go / hold decision with conditions | Board or owner | Not approved |
+
+Lake County identifies Community Development as including Building Safety, Code Enforcement, and Planning, and directs current permits and applications to its online permitting portal.[4] The county’s Assessor–Recorder and public recorder index are public starting points for recorded-document research, but they are not a substitute for a current title commitment or counsel review.[5] [6] Lake County Environmental Health identifies septic and land-development review as separate county processes that can require a site evaluation and permit.[7] [8]
+
+## Resident Intake and Onboarding Boundary
+
+The public intake form records only a name, optional contact channel, entry pathway, requested track, accessibility or communication note, and explicit consent to contact. It does not request diagnoses, treatment records, substance-use records, criminal history, supervision conditions, immigration information, or crisis details. Owner review should use the application code as the operating reference and keep additional sensitive information outside this portal until counsel and qualified providers define a compliant workflow.
+
+The planned pathway is:
+
+**Request → consent check → safety and accessibility conversation → eligibility and fit review → support/referral coordination → separate residential or work agreement → placement decision → orientation → training/work record → advancement or exit plan.**
+
+A court, probation, parole, corrections, or alternative-to-incarceration referral is a separate authorization path. The portal cannot promise court credit, sentence substitution, supervision approval, placement, or legal representation. Any such pathway requires the responsible public authority, written authority, participant-rights notice, grievance and exit process, safety plan, and counsel review.
+
+## Draft Control Packet
+
+The following documents should be drafted and separately approved before the first resident or field crew is accepted: a participant agreement; residential rules and occupancy agreement; workforce classification and pay memo; clinical and recovery referral MOU; corrections or supervision MOU; privacy notice and retention schedule; incident and safeguarding protocol; and property/procurement release checklist. The application, dashboard, and public pages label these as draft or pending professional review.
+
+## IWA / Sage Coordination Boundary
+
+Indigenous Wellness Alliance describes itself as a Native-led 501(c)(3) organization offering culturally responsive mental wellness, re-entry support, substance-use recovery, suicide prevention, and family-strengthening services.[9] Project Reclaim may offer a human-reviewed link and referral surface, but it must not imply a contract, endorsement, shared client record, or automatic referral. Any future Sage connection requires the official product owner, endpoint, authentication method, minimum-data contract, consent language, security review, and written agreement.
+
+## References Added
+
+[4]: https://www.lakecountyca.gov/410/Community-Development "Lake County Community Development"
+[5]: https://www.lakecountyca.gov/271/Assessor---Recorder "Lake County Assessor–Recorder"
+[6]: https://www.lakecountyca.gov/1632/Recorders-Index-Search-External "Lake County Recorders Index Search"
+[7]: https://www.lakecountyca.gov/211/Environmental-Health "Lake County Environmental Health"
+[8]: https://www.lakecountyca.gov/376/Land-Development "Lake County Land Development"
+[9]: https://www.iwainc.org/ "Indigenous Wellness Alliance official site"

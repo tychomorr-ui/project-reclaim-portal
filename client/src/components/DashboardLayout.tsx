@@ -33,6 +33,7 @@ const menuItems = [
   { icon: Inbox, label: "Inbox", path: "/admin" },
   { icon: ClipboardCheck, label: "Evidence & release desk", path: "/admin/operations" },
   { icon: FileUp, label: "Evidence vault", path: "/admin/evidence" },
+  { icon: ClipboardCheck, label: "Pilot command board", path: "/pilot-operations" },
 ];
 
 const SIDEBAR_WIDTH_KEY = "sidebar-width";

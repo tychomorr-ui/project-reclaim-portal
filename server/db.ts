@@ -1,6 +1,6 @@
 import { and, desc, eq, gte, inArray, ne } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
-import { evidenceAssets, fieldEvidencePilots, impactMetrics, inquiries, InsertUser, opportunities, products, projects, provenancePackets, referralResources, stories, users } from "../drizzle/schema";
+import { credentialRecords, evidenceAssets, fieldEvidencePilots, impactMetrics, inquiries, InsertUser, opportunities, pilotCommandItems, products, projects, propertyEvaluations, provenancePackets, referralResources, residentIntakes, stories, users } from "../drizzle/schema";
 import type { EvidenceAssetInput, FieldEvidencePilotInput, ImpactMetricInput, ProvenancePacketInput, ReferralResourceInput, StoryInput } from "./governance";
 import type { InquiryInput } from "./inquiries";
 import { ENV } from "./_core/env";
@@ -96,3 +96,19 @@ export async function createInquiry(input: InquiryInput) {
 export async function listInquiries() { const db = await getDb(); if (!db) throw new Error("Database is unavailable."); return db.select().from(inquiries).orderBy(desc(inquiries.createdAt)); }
 export async function updateInquiryStatus(id: number, status: "new" | "reviewing" | "responded" | "archived") { const db = await getDb(); if (!db) throw new Error("Database is unavailable."); await db.update(inquiries).set({ status }).where(eq(inquiries.id, id)); }
 export async function updateInquiryAlertStatus(id: number, ownerNotificationSent: boolean) { const db = await getDb(); if (!db) throw new Error("Database is unavailable."); await db.update(inquiries).set({ ownerNotificationSent }).where(eq(inquiries.id, id)); }
+
+export async function listOwnerPropertyEvaluations() { const db = await getDb(); if (!db) throw new Error("Database is unavailable."); return db.select().from(propertyEvaluations).orderBy(desc(propertyEvaluations.updatedAt)); }
+export async function createPropertyEvaluation(input: Record<string, unknown>) { const db = await getDb(); if (!db) throw new Error("Database is unavailable."); const result = await db.insert(propertyEvaluations).values(input as never); return Number((result as unknown as { insertId?: number }).insertId); }
+export async function updatePropertyEvaluation(id: number, input: Record<string, unknown>) { const db = await getDb(); if (!db) throw new Error("Database is unavailable."); await db.update(propertyEvaluations).set(input as never).where(eq(propertyEvaluations.id, id)); }
+
+export async function listOwnerPilotCommandItems() { const db = await getDb(); if (!db) throw new Error("Database is unavailable."); return db.select().from(pilotCommandItems).orderBy(desc(pilotCommandItems.updatedAt)); }
+export async function createPilotCommandItem(input: Record<string, unknown>) { const db = await getDb(); if (!db) throw new Error("Database is unavailable."); const result = await db.insert(pilotCommandItems).values(input as never); return Number((result as unknown as { insertId?: number }).insertId); }
+export async function updatePilotCommandItem(id: number, input: Record<string, unknown>) { const db = await getDb(); if (!db) throw new Error("Database is unavailable."); await db.update(pilotCommandItems).set(input as never).where(eq(pilotCommandItems.id, id)); }
+
+export async function listOwnerCredentialRecords() { const db = await getDb(); if (!db) throw new Error("Database is unavailable."); return db.select().from(credentialRecords).orderBy(desc(credentialRecords.updatedAt)); }
+export async function createCredentialRecord(input: Record<string, unknown>) { const db = await getDb(); if (!db) throw new Error("Database is unavailable."); const result = await db.insert(credentialRecords).values(input as never); return Number((result as unknown as { insertId?: number }).insertId); }
+export async function updateCredentialRecord(id: number, input: Record<string, unknown>) { const db = await getDb(); if (!db) throw new Error("Database is unavailable."); await db.update(credentialRecords).set(input as never).where(eq(credentialRecords.id, id)); }
+
+export async function listOwnerResidentIntakes() { const db = await getDb(); if (!db) throw new Error("Database is unavailable."); return db.select().from(residentIntakes).orderBy(desc(residentIntakes.updatedAt)); }
+export async function createResidentIntake(input: Record<string, unknown>) { const db = await getDb(); if (!db) throw new Error("Database is unavailable."); const result = await db.insert(residentIntakes).values(input as never); return Number((result as unknown as { insertId?: number }).insertId); }
+export async function updateResidentIntake(id: number, input: Record<string, unknown>) { const db = await getDb(); if (!db) throw new Error("Database is unavailable."); await db.update(residentIntakes).set(input as never).where(eq(residentIntakes.id, id)); }

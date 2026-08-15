@@ -196,4 +196,80 @@ export type Story = typeof stories.$inferSelect;
 export type ReferralResource = typeof referralResources.$inferSelect;
 export type FieldEvidencePilot = typeof fieldEvidencePilots.$inferSelect;
 export type EvidenceAsset = typeof evidenceAssets.$inferSelect;
+export const propertyEvaluations = mysqlTable("property_evaluations", {
+  id: int("id").autoincrement().primaryKey(),
+  propertyName: varchar("propertyName", { length: 240 }).notNull(),
+  county: mysqlEnum("county", ["mendocino", "lake", "other"]).notNull(),
+  propertyType: mysqlEnum("propertyType", ["vineyard_or_ranch", "motel_or_hotel", "farmhouse_or_lodge", "commercial_hub", "other"]).notNull(),
+  sourceUrl: varchar("sourceUrl", { length: 1024 }),
+  listingStatus: mysqlEnum("listingStatus", ["active_lead", "not_listed", "status_unknown", "retired_lead"]).notNull().default("status_unknown"),
+  planningRole: mysqlEnum("planningRole", ["residential_campus", "operations_hub", "two_site_candidate", "future_branch"]).notNull(),
+  diligenceStatus: mysqlEnum("diligenceStatus", ["lead", "broker_contact_pending", "broker_verified", "title_pending", "code_pending", "safety_pending", "board_review", "approved_for_due_diligence", "rejected", "archived"]).notNull().default("lead"),
+  brokerStatus: mysqlEnum("brokerStatus", ["not_started", "requested", "received", "verified", "blocked"]).notNull().default("not_started"),
+  titleStatus: mysqlEnum("titleStatus", ["not_started", "ordered", "received", "reviewed", "blocked"]).notNull().default("not_started"),
+  codeStatus: mysqlEnum("codeStatus", ["not_started", "requested", "received", "reviewed", "blocked"]).notNull().default("not_started"),
+  safetyStatus: mysqlEnum("safetyStatus", ["not_started", "screening", "professional_review", "cleared_for_next_step", "blocked"]).notNull().default("not_started"),
+  sourceAsOf: timestamp("sourceAsOf"),
+  blockerNote: text("blockerNote"),
+  nextAction: varchar("nextAction", { length: 600 }),
+  reviewedBy: varchar("reviewedBy", { length: 180 }),
+  reviewedAt: timestamp("reviewedAt"),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export const pilotCommandItems = mysqlTable("pilot_command_items", {
+  id: int("id").autoincrement().primaryKey(),
+  title: varchar("title", { length: 240 }).notNull(),
+  workstream: mysqlEnum("workstream", ["property", "residential", "workforce", "safety", "partner", "procurement", "evidence", "communications"]).notNull(),
+  status: mysqlEnum("status", ["backlog", "ready", "in_progress", "blocked", "review", "complete"]).notNull().default("backlog"),
+  ownerLabel: varchar("ownerLabel", { length: 180 }),
+  dueAt: timestamp("dueAt"),
+  dependencyNote: text("dependencyNote"),
+  releaseGate: varchar("releaseGate", { length: 500 }),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export const credentialRecords = mysqlTable("credential_records", {
+  id: int("id").autoincrement().primaryKey(),
+  participantLabel: varchar("participantLabel", { length: 180 }).notNull(),
+  pathway: mysqlEnum("pathway", ["field_stewardship", "fire_resilience", "wood_carpentry", "life_workplace", "disaster_readiness", "equipment_logistics", "community_operations"]).notNull(),
+  credentialName: varchar("credentialName", { length: 240 }).notNull(),
+  issuerName: varchar("issuerName", { length: 240 }),
+  issuerStatus: mysqlEnum("issuerStatus", ["not_selected", "partner_candidate", "approved_issuer", "verification_pending"]).notNull().default("not_selected"),
+  recordStatus: mysqlEnum("recordStatus", ["planned", "enrolled", "in_progress", "completed", "verified", "withdrawn"]).notNull().default("planned"),
+  evidenceNote: text("evidenceNote"),
+  completedAt: timestamp("completedAt"),
+  verifiedAt: timestamp("verifiedAt"),
+  reviewedBy: varchar("reviewedBy", { length: 180 }),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export const residentIntakes = mysqlTable("resident_intakes", {
+  id: int("id").autoincrement().primaryKey(),
+  applicationCode: varchar("applicationCode", { length: 40 }).notNull().unique(),
+  applicantName: varchar("applicantName", { length: 180 }).notNull(),
+  contactEmail: varchar("contactEmail", { length: 320 }),
+  contactPhone: varchar("contactPhone", { length: 40 }),
+  entryPathway: mysqlEnum("entryPathway", ["walk_in", "veteran_referral", "housing_referral", "workforce_referral", "reentry_referral", "court_or_supervision_referral", "other"]).notNull(),
+  requestedTrack: mysqlEnum("requestedTrack", ["residential", "community_based", "field_school", "not_sure"]).notNull(),
+  intakeStatus: mysqlEnum("intakeStatus", ["received", "screening", "eligible_review", "placement_pending", "placed", "waitlist", "declined", "withdrawn"]).notNull().default("received"),
+  consentToContact: boolean("consentToContact").notNull().default(false),
+  accessibilityNote: varchar("accessibilityNote", { length: 600 }),
+  supportPathwayStatus: mysqlEnum("supportPathwayStatus", ["not_assessed", "referral_needed", "provider_pathway_identified", "provider_connected"]).notNull().default("not_assessed"),
+  courtAuthorityStatus: mysqlEnum("courtAuthorityStatus", ["not_applicable", "referral_pending", "authority_pending", "authorized", "not_authorized"]).notNull().default("not_applicable"),
+  placementNote: text("placementNote"),
+  privateReviewNote: text("privateReviewNote"),
+  reviewedBy: varchar("reviewedBy", { length: 180 }),
+  reviewedAt: timestamp("reviewedAt"),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
 export type ProvenancePacket = typeof provenancePackets.$inferSelect;
+export type PropertyEvaluation = typeof propertyEvaluations.$inferSelect;
+export type PilotCommandItem = typeof pilotCommandItems.$inferSelect;
+export type CredentialRecord = typeof credentialRecords.$inferSelect;
+export type ResidentIntake = typeof residentIntakes.$inferSelect;

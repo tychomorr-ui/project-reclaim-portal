@@ -105,3 +105,13 @@
 - [x] Add and prioritize further recommendations across application UX, operations, evidence, workforce, residential readiness, disaster preparedness, ecosystem integration, and funding readiness.
 - [x] Add automated coverage, responsive validation, and documentation for the meta-compound upgrade and deliverables.
 - [x] Save the completed multidimensional meta-compound application, Oregon Lightsail handoff, board brief, procurement package, recommendations, validation record, and deployment archive as a restore-ready checkpoint.
+
+- [ ] Confirm `reclaim.nexinus.net` as the intended domain target and prepare a Lightsail verification checklist without accessing or modifying an external instance.
+- [ ] Obtain current broker, title, zoning/occupancy, code, fire/life-safety, environmental, insurance, and financing diligence records for the Voigt Road Vineyard and 3360 Old Highway 53 leads, while keeping both properties unapproved planning candidates.
+- [x] Build an owner-only authorized pilot command board for scopes, work orders, crews, safety, materials, evidence, review, and release state.
+- [x] Build a credential and participant portfolio registry that distinguishes internal work records from credentials issued by approved external issuers.
+- [x] Develop a consent-first resident intake and onboarding flow with referral source, pathway assignment, residential/community track, accommodations, support boundaries, rights, safety, and exit/advancement planning.
+- [x] Assemble draft legal and compliance readiness materials covering residential operations, alternative pathways, participant agreements, labor/pay, privacy, clinical/referral boundaries, corrections referrals, insurance, property, safety, data governance, and incident response; label all drafts for professional review.
+- [x] Add a safe IWA/Sage partnership link and referral boundary without claiming a live integration until its official public URL, owner authorization, data terms, and technical endpoint are confirmed.
+- [x] Add an interactive property-evaluation dashboard with diligence gates, owners, evidence links, review dates, blockers, and planning-only status.
+- [x] Add automated security, privacy, route, form, diligence-gate, and responsive coverage, update validation documentation, and save a final checkpoint.

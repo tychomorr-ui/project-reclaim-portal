@@ -1,5 +1,5 @@
 import React from "react";
-import { ArrowRight, Boxes, Compass, FileCheck2, Flame, Home, Map, Network, PackageCheck, ShieldCheck, Users } from "lucide-react";
+import { ArrowRight, Boxes, Compass, FileCheck2, Flame, Home, Map, Network, PackageCheck, ShieldCheck, Users, HeartHandshake, ClipboardCheck } from "lucide-react";
 import { Link } from "wouter";
 import { PageIntro, PortalChrome, StatusPill } from "@/components/PortalChrome";
 
@@ -12,6 +12,10 @@ const destinations = [
   { icon: FileCheck2, eyebrow: "Make it accountable", title: "Evidence & impact", body: "Read the verification-led metrics, consent-first stories, evidence release, and local provenance boundaries.", href: "/impact", label: "Open evidence layer" },
   { icon: Network, eyebrow: "Connect the system", title: "NEXINUS ecosystem", body: "See how Project Reclaim relates to NEXINUS, Root, and future ecosystem coordination without claiming live integrations.", href: "/nexus", label: "Open ecosystem map" },
   { icon: ShieldCheck, eyebrow: "Plan the next release", title: "Roadmap & governance", body: "Follow the release gates for partner onboarding, residential readiness, procurement, records, and provenance.", href: "/roadmap", label: "Open upgrade roadmap" },
+  { icon: ClipboardCheck, eyebrow: "Owner-only", title: "Pilot command board", body: "Review property diligence, workstreams, credential records, and resident-intake states in the protected operating layer.", href: "/pilot-operations", label: "Open command board" },
+  { icon: HeartHandshake, eyebrow: "Request a pathway", title: "Resident intake", body: "Start a consent-first conversation without submitting clinical, criminal-history, supervision, or crisis details.", href: "/intake", label: "Open intake" },
+  { icon: Network, eyebrow: "Partner boundary", title: "IWA / Sage link", body: "Review the proposed human-reviewed referral surface with Indigenous Wellness Alliance and the separate no-live-connector boundary.", href: "/iwa-sage", label: "Open partnership boundary" },
+  { icon: ShieldCheck, eyebrow: "Professional review", title: "Compliance readiness", body: "See the draft legal, property, labor, clinical, privacy, residential, and referral controls required before operations.", href: "/compliance-readiness", label: "Open compliance register" },
   { icon: Boxes, eyebrow: "Connect every dimension", title: "Meta-compound", body: "See how physical operations, residential pathways, workforce, disaster readiness, partners, evidence, provenance, and Oregon launch readiness fit together.", href: "/meta-compound", label: "Open meta-compound" },
 ];
 

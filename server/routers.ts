@@ -7,6 +7,7 @@ import { ownerProcedure, protectedProcedure, publicProcedure, router } from "./_
 import { createInquiry, listInquiries, listOpportunities, listProducts, listProjects, listPublicFieldEvidencePilots, listPublicImpactMetrics, listPublicReferralResources, listPublishedStories, updateInquiryAlertStatus, updateInquiryStatus } from "./db";
 import { governanceRouter } from "./governance";
 import { inquiryInputSchema } from "./inquiries";
+import { operationalGovernanceRouter } from "./operationalGovernance";
 
 export const appRouter = router({
   system: systemRouter,
@@ -25,6 +26,7 @@ export const appRouter = router({
     fieldPilots: publicProcedure.query(() => listPublicFieldEvidencePilots()),
   }),
   governance: governanceRouter,
+  operations: operationalGovernanceRouter,
   inquiries: router({
     create: publicProcedure.input(inquiryInputSchema).mutation(async ({ input }) => {
       const inquiryId = await createInquiry(input);

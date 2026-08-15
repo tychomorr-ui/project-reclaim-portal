@@ -81,3 +81,14 @@
 - [x] Inspect UniversalTruth’s public integration surface and current connector configuration, then implement only a non-financial, non-custodial provenance-readiness boundary appropriate for Project Reclaim.
 - [x] Add automated coverage and responsive validation for scroll-to-top navigation, inclusive/residential disclosures, detailed pathway interactions, roadmap status, and provenance readiness, then save a validated checkpoint.
 - [x] Save the validated scroll-reset, residential-readiness, detailed skills, roadmap, controlled-evidence, and provenance-readiness expansion as a restore-ready Project Reclaim checkpoint.
+
+- [x] Execute the authorized compound upgrade directly without additional approval pauses, while retaining automatic safety, privacy, authorization, and no-fabrication boundaries.
+
+- [x] Define the two-site hybrid operating model in the portal: vineyard-style residential and land-stewardship campus plus 3360 Old Highway 53 operations, materials, and field-school hub, both clearly labeled as planning candidates rather than secured sites.
+- [ ] Audit every public route, owner route, internal link, button, form, map state, filter, tooltip, and data endpoint for a coherent destination, useful empty state, or explicit coming-soon explanation.
+- [x] Add compound-upgrade navigation and cross-links so projects, opportunities, resources, skills, residential readiness, field pilot, evidence, provenance, partners, roadmap, and owner workspaces form a coherent operating map.
+- [x] Upgrade the map and project registry with explicit two-site planning context, proposed/active/verified states, source disclosures, accessible controls, and safe future integration boundaries.
+- [x] Add the Oregon-facing launch/readiness layer while preserving Mendocino–Lake County property research as the current pilot planning context; do not imply a relocation, property control, partner authorization, or live operations without evidence.
+- [ ] Audit and strengthen every public and owner API contract, security guard, form submission, and empty state so every action has a safe destination and no unsupported claim is presented as active.
+- [x] Define the multidimensional meta-compound upgrade architecture across physical operations, workforce, residential, disaster readiness, partner coordination, evidence, provenance, and ecosystem readiness.
+- [ ] Run comprehensive responsive and interaction validation, then save a compound-upgrade checkpoint and provide publishing/domain guidance without deploying to an external Lightsail instance or attempting to purchase a Namecheap domain.

@@ -6,6 +6,7 @@ vi.mock("wouter", () => ({ Link: ({ children, href, ...props }: { children: Reac
 
 import Explore from "../client/src/pages/Explore";
 import OperatingModel from "../client/src/pages/OperatingModel";
+import MetaCompound from "../client/src/pages/MetaCompound";
 
 describe("compound upgrade public pages", () => {
   it("renders the central Explore operating map with real destinations", () => {
@@ -14,7 +15,19 @@ describe("compound upgrade public pages", () => {
     expect(html).toContain("/operating-model");
     expect(html).toContain("/projects");
     expect(html).toContain("/provenance");
+    expect(html).toContain("/meta-compound");
     expect(html).toContain("Operating map in progress");
+  });
+
+  it("renders the meta-compound dimensions with real destinations and release discipline", () => {
+    const html = renderToStaticMarkup(React.createElement(MetaCompound));
+    expect(html).toContain("One operating map. Many dimensions of capability.");
+    expect(html).toContain("Vineyard-style residential and land-stewardship campus");
+    expect(html).toContain("3360 Old Highway 53 operations");
+    expect(html).toContain("Oregon launch readiness");
+    expect(html).toContain("Pending authorization");
+    expect(html).toContain("/provenance");
+    expect(html).toContain("/partnerships");
   });
 
   it("keeps the two-site model planning-only and source-safe", () => {

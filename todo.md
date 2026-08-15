@@ -96,3 +96,12 @@
 - [x] Run and document a route-by-route audit covering all public and owner pages, every internal link, button, form, map control, filter, and tooltip, then add regression tests for any gaps found.
 - [x] Add explicit automated coverage for all public and owner API procedures, form submissions, and empty states referenced by the compound-upgrade audit, not just route-string/source checks.
 - [x] Re-review the compound-upgrade checklist completion states after the full audit is evidenced in tests and validation logs, then mark the appropriate items complete before checkpointing.
+
+- [x] Execute the multidimensional meta-compound upgrade across the full Project Reclaim application, preserving all existing safety, privacy, authorization, and no-fabrication boundaries.
+- [x] Prepare an Oregon Lightsail deployment configuration package for the user’s Lycel/Lightsail instance without deploying externally, purchasing a domain, or adding unprovided credentials.
+- [x] Research and document authoritative deployment, Oregon operating, property due-diligence, emergency-readiness, procurement, workforce, and partner-governance requirements for the pilot.
+- [x] Write a board-facing Project Reclaim pilot-property concept brief centered on the Mendocino–Lake County two-site hybrid planning model and future Oregon launch context.
+- [x] Prepare a source-aware pilot-property and equipment procurement package that separates planning benchmarks, vendor bids, due diligence, approvals, and contingencies.
+- [x] Add and prioritize further recommendations across application UX, operations, evidence, workforce, residential readiness, disaster preparedness, ecosystem integration, and funding readiness.
+- [x] Add automated coverage, responsive validation, and documentation for the meta-compound upgrade and deliverables.
+- [ ] Save the completed multidimensional meta-compound application, Oregon Lightsail handoff, board brief, procurement package, recommendations, validation record, and deployment archive as a restore-ready checkpoint.

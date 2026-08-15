@@ -1,5 +1,5 @@
 import React from "react";
-import { ArrowRight, Compass, FileCheck2, Flame, Home, Map, Network, PackageCheck, ShieldCheck, Users } from "lucide-react";
+import { ArrowRight, Boxes, Compass, FileCheck2, Flame, Home, Map, Network, PackageCheck, ShieldCheck, Users } from "lucide-react";
 import { Link } from "wouter";
 import { PageIntro, PortalChrome, StatusPill } from "@/components/PortalChrome";
 
@@ -12,6 +12,7 @@ const destinations = [
   { icon: FileCheck2, eyebrow: "Make it accountable", title: "Evidence & impact", body: "Read the verification-led metrics, consent-first stories, evidence release, and local provenance boundaries.", href: "/impact", label: "Open evidence layer" },
   { icon: Network, eyebrow: "Connect the system", title: "NEXINUS ecosystem", body: "See how Project Reclaim relates to NEXINUS, Root, and future ecosystem coordination without claiming live integrations.", href: "/nexus", label: "Open ecosystem map" },
   { icon: ShieldCheck, eyebrow: "Plan the next release", title: "Roadmap & governance", body: "Follow the release gates for partner onboarding, residential readiness, procurement, records, and provenance.", href: "/roadmap", label: "Open upgrade roadmap" },
+  { icon: Boxes, eyebrow: "Connect every dimension", title: "Meta-compound", body: "See how physical operations, residential pathways, workforce, disaster readiness, partners, evidence, provenance, and Oregon launch readiness fit together.", href: "/meta-compound", label: "Open meta-compound" },
 ];
 
 export default function Explore() {

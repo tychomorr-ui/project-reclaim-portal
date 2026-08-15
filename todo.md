@@ -118,3 +118,8 @@
 
 - [x] Scrape and cross-check public-web listing, county, parcel, zoning, permit, environmental, hazard, insurance, and financing evidence for the Voigt Road Vineyard and 3360 Old Highway 53 leads; preserve unknown states where open sources cannot establish records
 - [x] Update the protected property dashboard, operational-governance readiness record, validation record, and checkpoint with the source-aware public-web diligence findings
+
+- [x] Document the plain-English zoning, permit, occupancy, fire/life-safety, utility, environmental, and jurisdiction checklist for 3360/3300 Old Highway 53
+- [x] Scan public candidate-property and official planning resources around Ukiah, Willits, and Fort Bragg without fabricating available properties
+- [x] Verify Oregon publication readiness against the prepared Lightsail handoff and document the Archangel control-plane integration boundary without connecting it
+- [x] Update the portal research and launch records, test, checkpoint, and report the current publishable state

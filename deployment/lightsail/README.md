@@ -66,3 +66,14 @@ This package prepares hosting only. It does not claim Oregon operations, an Oreg
 ## References
 
 [1]: https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-quick-start-guide-nodejs.html "AWS Lightsail: Deploy and manage a Node.js stack on Lightsail"
+
+
+## Current publication-readiness assessment — August 15, 2026
+
+The application is technically prepared for an operator-managed Oregon Lightsail deployment: `pnpm check`, `pnpm test`, and `pnpm build` pass locally; the build produces `dist/public` and `dist/index.js`; and the PM2/runbook package is secret-free. The project is **not yet live on the user’s Oregon instance** because no instance shell, static IP, DNS record, reverse proxy, runtime environment, production database, OAuth callback allowlist, TLS certificate, or backup configuration has been verified in this session.
+
+In practical terms, Project Reclaim is close to publishing as software, but not yet ready to claim a production launch. The remaining deployment steps are operational: confirm the instance and static IP, install the release, inject production secrets, configure the database and storage, map `reclaim.nexinus.net`, configure TLS and OAuth, run smoke tests, enable snapshots and backups, and verify the owner-only routes.
+
+## Archangel control-plane boundary
+
+The Project Reclaim portal currently has **no live Archangel connector** and no Archangel endpoint, authentication token, event schema, command authority, device protocol, or failure-handling contract has been supplied. The future integration should begin as a read-only status or event bridge, with explicit authorization, audit logs, least-privilege credentials, replay protection, and a human-controlled disable switch. No Archangel connection was attempted, no credentials were requested, and no control-plane command can be issued from this portal at the current checkpoint.

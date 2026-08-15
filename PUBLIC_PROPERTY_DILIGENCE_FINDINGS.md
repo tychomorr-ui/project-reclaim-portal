@@ -67,3 +67,8 @@ This narrows the Voigt lead to a historical Lake County property at 500 Voigt Ro
 ## Reference
 
 [9]: https://norcalvineyards.com/wp-content/uploads/2017/02/500-Voigt-Marketing-Package.pdf "NorCal Vineyards — Voigt Road Vineyard historical offering memorandum"
+
+
+## Broker-contact verification attempt
+
+The syndicated listing identifies the listing information as courtesy of **James Magliulo, Country Air Properties, 707-263-2620**. The JohnHart syndication page exposes a contact form, but direct interaction is blocked by a captcha in the research browser. The public Country Air Properties site is reachable at `https://www.countryair.com/` and identifies the brokerage as operating in Lakeport, California. No message was submitted and no broker was contacted automatically in this pass; the approved next step remains a human-reviewed broker inquiry using the factual request packet.

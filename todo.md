@@ -138,3 +138,38 @@
 - [x] Create a fresh-instance Project Reclaim launch script that preserves SSH before enabling UFW, installs Node 22/pnpm/PM2/Nginx, and uses strict failure handling
 - [x] Make the launch script idempotent, secret-safe, DNS-aware, and reversible with versioned releases and PM2 startup persistence
 - [x] Validate the script syntax and package it with the current secret-free Oregon Lightsail handoff
+
+- [x] Diagnose the fresh-instance launch stop after apt metadata refresh and confirm whether the script was run from a workstation with the release archive, SSH key, and protected environment file
+- [x] Rerun the corrected launcher from the required trusted workspace with explicit host, user, key, release, and environment inputs
+
+- [x] Replace the workstation-dependent launcher handoff with a clearly documented server-side bootstrap path for a clean Ubuntu Lightsail instance
+- [x] Validate that the server-side path installs its own dependencies, preserves SSH, deploys the release, and stops clearly at missing production secrets or DNS/TLS gates
+- [x] Deliver the exact clean-instance commands without requiring the user to pre-install Node, pnpm, PM2, or Nginx
+
+- [x] Repair the global pnpm and PM2 installation on the clean instance and confirm both commands resolve on PATH before retrieving the release
+
+- [x] Resolve the npm global-bin PATH issue by locating the actual pnpm and PM2 binaries and exposing them through stable `/usr/local/bin` links
+
+- [x] Locate pnpm and PM2 directly under npm’s global prefix or installed package directories because npm 10 does not support `npm bin -g`
+
+- [x] Expose the confirmed Corepack pnpm shim and PM2 binary through `/usr/local/bin`, then verify both versions from the active shell
+
+- [x] Confirm the Corepack pnpm shim and PM2 binary are available from the active shell; PM2 daemon started successfully
+- [x] Retrieve or transfer the validated release archive into the fresh instance and install its locked dependencies
+- [ ] Configure the protected production environment file before starting the application
+
+- [x] Repair the broken manually-created pnpm link by enabling Corepack into `/usr/local/bin`, activate pnpm 10.4.1, and complete the frozen dependency install
+
+- [x] Bypass Corepack’s default-version resolution failure by locating the actual pnpm CLI or installing a self-contained pnpm command, then complete the frozen dependency install
+
+- [x] Create the direct `/usr/local/bin/pnpm` wrapper around the installed pnpm CLI and complete `pnpm install --frozen-lockfile` in `/opt/project-reclaim/current`
+
+- [x] Complete the direct pnpm wrapper and locked dependency installation in `/opt/project-reclaim/current`
+- [ ] Configure the protected production environment file with the required server-side values before starting Project Reclaim
+- [x] Start PM2 and Nginx, then verify local HTTP while keeping SSH access open
+
+- [x] Install Certbot and the Nginx integration package on the fresh Oregon instance before requesting `reclaim.nexinus.net` TLS
+
+- [x] Install Certbot and the Nginx integration package on the fresh Oregon instance before requesting `reclaim.nexinus.net` TLS
+- [x] Issue and deploy the `reclaim.nexinus.net` certificate with automatic renewal scheduling
+- [x] Verify HTTPS, HTTP redirect, renewal dry run, PM2/Nginx health, and public application routes; all checks passed

@@ -120,3 +120,12 @@ Indigenous Wellness Alliance describes itself as a Native-led 501(c)(3) organiza
 [7]: https://www.lakecountyca.gov/211/Environmental-Health "Lake County Environmental Health"
 [8]: https://www.lakecountyca.gov/376/Land-Development "Lake County Land Development"
 [9]: https://www.iwainc.org/ "Indigenous Wellness Alliance official site"
+
+
+## Public-Web Property Sweep — Plain-Language Result
+
+The public-web sweep found two different kinds of lead. The **Voigt Road Vineyard** is a historical Lake County lead at 500 Voigt Road. The historical brochure identifies APNs 008-032-11, 008-032-17, and 008-043-02, but the later public listing page marks the property sold. In ordinary language, this means it is useful as a historical property reference but should not be treated as an available Project Reclaim campus unless a current owner, broker, or title source confirms otherwise.
+
+The **3360/3300 Old Highway 53** lead is described by a current syndicated MLS page as an active commercial listing at $399,000, approximately 2.17 acres, with a C2 zoning description and two parcels. The listing itself says the information has not been independently verified. A third-party listing mirror suggests a possible APN for 3300 Old Highway 53, but the county assessor must confirm it. In ordinary language, this means the property is a live lead worth contacting the broker about, not a secured or approved Project Reclaim site.
+
+The protected property dashboard now stores both records with their source URLs, source date, planning role, public listing state, next action, and blockers. It keeps broker contact, title, zoning/code, safety, insurance, financing, current ownership, and Project Reclaim authority unresolved until the appropriate source confirms them. The open-web sweep did not obtain a title commitment, survey, permit file, inspection report, insurance binder, financing commitment, or written right to enter or purchase either property.

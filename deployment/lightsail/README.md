@@ -77,3 +77,26 @@ In practical terms, Project Reclaim is close to publishing as software, but not 
 ## Archangel control-plane boundary
 
 The Project Reclaim portal currently has **no live Archangel connector** and no Archangel endpoint, authentication token, event schema, command authority, device protocol, or failure-handling contract has been supplied. The future integration should begin as a read-only status or event bridge, with explicit authorization, audit logs, least-privilege credentials, replay protection, and a human-controlled disable switch. No Archangel connection was attempted, no credentials were requested, and no control-plane command can be issued from this portal at the current checkpoint.
+
+## Fresh-instance launcher
+
+Use `project-reclaim-launch.sh` from a trusted workstation or sandbox against a new Ubuntu Lightsail instance. The AWS region key is an authentication key; for the standard Ubuntu image, keep the SSH username as `ubuntu` unless the instance was intentionally created with a different login user. Do not use `root` merely because the downloaded key is the region’s default or “root” key.
+
+The launcher requires the new instance IP or hostname, the private key path, and the secret-free release archive. It accepts a mode-600 production environment file through `--env-file`; without that file it installs the release but deliberately does not start PM2. The script installs Node.js 22.13.0, pnpm 10.4.1, PM2, and Nginx; creates a versioned release; preserves SSH before enabling UFW; configures Nginx; starts PM2; and performs an HTTP localhost check. It does not request TLS or change DNS automatically.
+
+Example:
+
+```bash
+chmod 600 /path/to/project-reclaim-ssh.pem
+chmod 750 deployment/lightsail/project-reclaim-launch.sh
+./deployment/lightsail/project-reclaim-launch.sh \
+  --host NEW_LIGHTSAIL_STATIC_IP \
+  --user ubuntu \
+  --key /path/to/project-reclaim-ssh.pem \
+  --release /path/to/project-reclaim-release-e5c2eb96.tgz \
+  --env-file /path/to/project-reclaim.production.env
+```
+
+The production environment file must be created locally with mode `600` and must never be committed. It should contain the server-side values required by `server/_core/env.ts`, including `NODE_ENV=production`, `PORT=3000`, `DATABASE_URL`, `JWT_SECRET`, `VITE_APP_ID`, `OAUTH_SERVER_URL`, `OWNER_OPEN_ID`, `BUILT_IN_FORGE_API_URL`, and `BUILT_IN_FORGE_API_KEY`.
+
+After the launcher reports `DEPLOYMENT_READY_HTTP_ONLY`, create the DNS A record `reclaim.nexinus.net → NEW_LIGHTSAIL_STATIC_IP`. Once DNS resolves, request the certificate with Certbot, then run HTTPS smoke tests. Archangel remains intentionally disconnected until its endpoint, authentication, event contract, and authorization are separately supplied.

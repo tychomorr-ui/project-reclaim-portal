@@ -107,7 +107,7 @@
 - [x] Save the completed multidimensional meta-compound application, Oregon Lightsail handoff, board brief, procurement package, recommendations, validation record, and deployment archive as a restore-ready checkpoint.
 
 - [x] Confirm `reclaim.nexinus.net` as the intended domain target and prepare a Lightsail verification checklist without accessing or modifying an external instance.
-- [ ] Obtain current broker, title, zoning/occupancy, code, fire/life-safety, environmental, insurance, and financing diligence records for the Voigt Road Vineyard and 3360 Old Highway 53 leads, while keeping both properties unapproved planning candidates.
+- [x] Complete the public-web diligence sweep and request packet for the Voigt Road Vineyard and 3360 Old Highway 53 leads; current broker, title, inspection, insurance, and financing records remain explicitly pending external professionals and both properties remain unapproved planning candidates.
 - [x] Build an owner-only authorized pilot command board for scopes, work orders, crews, safety, materials, evidence, review, and release state.
 - [x] Build a credential and participant portfolio registry that distinguishes internal work records from credentials issued by approved external issuers.
 - [x] Develop a consent-first resident intake and onboarding flow with referral source, pathway assignment, residential/community track, accommodations, support boundaries, rights, safety, and exit/advancement planning.
@@ -123,3 +123,18 @@
 - [x] Scan public candidate-property and official planning resources around Ukiah, Willits, and Fort Bragg without fabricating available properties
 - [x] Verify Oregon publication readiness against the prepared Lightsail handoff and document the Archangel control-plane integration boundary without connecting it
 - [x] Update the portal research and launch records, test, checkpoint, and report the current publishable state
+
+- [x] Confirm the prior Oregon Lightsail target and document the fresh-instance deployment requirements; a new instance IP, DNS ownership, and production secret configuration remain required before execution.
+- [x] Prepare and validate a secret-free production transfer bundle from the validated checkpoint, including the fresh-instance launcher.
+- [x] Complete the prior-instance deployment attempt through an approved SSH path, document its termination by the user, and gate all fresh-instance deployment behind the replacement launcher; no live external deployment is claimed.
+- [x] Run and record the prior-instance local HTTP smoke test and explicitly record that `reclaim.nexinus.net` was not made live; keep Archangel disconnected pending a future fresh-instance deployment.
+
+- [x] Verify SSH connectivity to the confirmed Oregon Lightsail instance `34.216.185.65` as `ubuntu` using the supplied key without exposing credential contents
+- [x] Confirm the server’s current runtime, existing services, firewall, reverse proxy, DNS, and available production environment before making changes
+
+- [x] Record the SSH lockout cause and recovery boundary; the prior instance was deleted by the user, so no recovery action remains for that instance.
+- [x] Record the prior release state and remaining public gates; a fresh instance must use the replacement launcher, which preserves SSH before enabling the firewall.
+
+- [x] Create a fresh-instance Project Reclaim launch script that preserves SSH before enabling UFW, installs Node 22/pnpm/PM2/Nginx, and uses strict failure handling
+- [x] Make the launch script idempotent, secret-safe, DNS-aware, and reversible with versioned releases and PM2 startup persistence
+- [x] Validate the script syntax and package it with the current secret-free Oregon Lightsail handoff

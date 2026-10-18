@@ -60,7 +60,7 @@ export function serveStatic(app: Express) {
 
   // The identity manifest is a signed byte-level document. Serve it directly
   // instead of allowing any JSON response normalization to alter its bytes.
-  const atmosIdentityPath = path.join(distPath, ".well-known", "atmos-identity.json");
+  const atmosIdentityPath = path.join(distPath, ".well-known", "atmos-identity.raw");
   app.get("/.well-known/atmos-identity.json", (_req, res, next) => {
     fs.readFile(atmosIdentityPath, (error, data) => {
       if (error) {

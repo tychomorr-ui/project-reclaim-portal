@@ -58,6 +58,25 @@ export function serveStatic(app: Express) {
     );
   }
 
+  // The identity manifest is a signed byte-level document. Serve it directly
+  // instead of allowing any JSON response normalization to alter its bytes.
+  const atmosIdentityPath = path.join(distPath, ".well-known", "atmos-identity.json");
+  app.get("/.well-known/atmos-identity.json", (_req, res, next) => {
+    fs.readFile(atmosIdentityPath, (error, data) => {
+      if (error) {
+        next(error);
+        return;
+      }
+      res.status(200);
+      res.set({
+        "Content-Type": "application/json",
+        "Content-Length": String(data.byteLength),
+        "Cache-Control": "public, max-age=0",
+      });
+      res.end(data);
+    });
+  });
+
   app.use(express.static(distPath));
 
   // fall through to index.html if the file doesn't exist

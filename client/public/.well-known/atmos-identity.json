@@ -1,0 +1,19 @@
+{
+  "schema": "https://sri.manus.space/schemas/atmos-identity-v1.json",
+  "nodeId": "PROJECT-RECLAIM",
+  "canonicalName": "PROJECT-RECLAIM",
+  "canonicalLocus": "https://reclaimporta-gsio8jvp.manus.space",
+  "logicalRegion": "Oregon",
+  "role": "field activation · real-world impact",
+  "manifestVersion": "1.0.0",
+  "publicKey": "MCowBQYDK2VwAyEA7sD8PzFz+dIfqhc/uQ/2HxWmrPU2xAw6PV00KO82bWs=",
+  "identityHash": "sha256:677bf8d0454d595e285096098fd1773fc267601cdc58d377212138c5b737c988",
+  "issuedAt": "2026-10-09T01:30:39.429Z",
+  "expiresAt": "2027-10-09T01:30:39.429Z",
+  "signature": "Cm+l2il86pAsp9zE5U3xbXPQUHZIk4gtLxHAnokowAyzqm8Jw3I7gwM5BNFPHQYzWBDHg4bSLN1/YMjDG+2ECQ==",
+  "format": "atmos-identity-manifest-v1",
+  "documentSha256": "sha256:677bf8d0454d595e285096098fd1773fc267601cdc58d377212138c5b737c988",
+  "signatureAlgorithm": "Ed25519-canonical-json",
+  "privateKeyIncluded": false,
+  "verification": "SELF_VERIFIED_ONLY"
+}

@@ -139,7 +139,7 @@ We are asking this board to authorize three specific actions:
 
 ## 8. References & Digital Map
 
-The Project Reclaim Portal is live and audit-ready. Every project, role, and roadmap item is visible and tracked.
+The Project Reclaim Portal is a public planning and navigation interface. It distinguishes proposed, planned, pending-verification, verified, completed, and unverified records. Project Reclaim will not claim completed work, participants, acreage, jobs, partnerships, credentials, or outcomes until those facts are documented and verified.
 
 - **Public Portal:** [https://reclaim.nexinus.net](https://reclaim.nexinus.net)
 
@@ -148,4 +148,3 @@ The Project Reclaim Portal is live and audit-ready. Every project, role, and roa
 - **Workforce:** [https://reclaim.nexinus.net/workforce](https://reclaim.nexinus.net/workforce)
 
 - **Evidence Desk:** (Owner-Protected Registry )
-

@@ -1,0 +1,9 @@
+{
+  "entry": "main.typ",
+  "mode": "markdown",
+  "source": {
+    "original_path": "/home/ubuntu/project-reclaim-portal/NEXINUS_ECOSYSTEM_CANONICAL_OPERATING_CHARTER.md",
+    "prepared_path": "source.md"
+  },
+  "theme": "report-theme.typ"
+}

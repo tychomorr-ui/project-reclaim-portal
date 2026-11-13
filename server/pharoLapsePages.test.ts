@@ -56,6 +56,13 @@ describe("Pharo-Lapse public positioning route", () => {
     expect(appSource).toContain('path="/pharo-lapse" component={PharoLapse}');
     expect(nexusSource).toContain('href="/pharo-lapse"');
     expect(nexusSource).toContain("Read the full public positioning");
+    expect(nexusSource).toContain(
+      'aria-label="Read the Pharo-Lapse public positioning document"'
+    );
+    expect(nexusSource).toMatch(/>\s*Document\s*<\/span>/);
+    expect(nexusSource).toContain("hover:-translate-y-0.5");
+    expect(nexusSource).toContain("hover:shadow-md");
+    expect(nexusSource).toContain("group-hover:translate-x-0.5");
   });
 
   it("keeps the homepage charter download CTA pointed at the canonical PDF asset", () => {

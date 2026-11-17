@@ -1,0 +1,12 @@
+{
+  "address_input": "1208 South State Street, Ukiah, CA 95482",
+  "candidate_apn": "00354040",
+  "candidate_apn_full": "0035404000",
+  "county_layer_acres": 0,
+  "calculated_polygon_sqft": 59838.76,
+  "calculated_polygon_acres": 1.3737,
+  "geocode_reference": "39.1338881,-123.2051038",
+  "status": "PROVISIONAL PARCEL REFERENCE ONLY; NOT A TREATMENT POLYGON; NOT LEGAL SURVEY; TREATMENT ACREAGE TBD",
+  "source": "Mendocino County Parcels Public feature service",
+  "source_url": "https://services5.arcgis.com/8y4r60VTvWj2wnDH/arcgis/rest/services/Parcels_Public_/FeatureServer/0"
+}

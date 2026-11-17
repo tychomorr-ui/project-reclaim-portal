@@ -1,0 +1,67 @@
+{
+  "type": "FeatureCollection",
+  "name": "project-reclaim-pharo-lapse-ukiah-parcel-reference",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "APN": "00354040",
+        "APNFULL": "0035404000",
+        "SITUS_ADD": "1208 S STATE ST",
+        "SITUS_CITY": "UKIAH",
+        "SITUS_ZIP": " ",
+        "ACRES": 0,
+        "GEN_PLAN": " ",
+        "reference_status": "PROVISIONAL_PAR\u0633\u0644_REFERENCE_ONLY",
+        "source": "Mendocino County Parcels Public feature service",
+        "source_url": "https://services5.arcgis.com/8y4r60VTvWj2wnDH/arcgis/rest/services/Parcels_Public_/FeatureServer/0",
+        "area_calculated_sqft": 59838.76,
+        "area_calculated_acres": 1.3737,
+        "treatment_acres": "TBD_AFTER_FIELD_ASSESSMENT_AND_AUTHORIZATION"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -123.205023162954,
+              39.1332507857266
+            ],
+            [
+              -123.206163211738,
+              39.1332312826595
+            ],
+            [
+              -123.206192339592,
+              39.1334103780719
+            ],
+            [
+              -123.206228553274,
+              39.1336940941322
+            ],
+            [
+              -123.206233229943,
+              39.1337383390509
+            ],
+            [
+              -123.205995820439,
+              39.1337415931379
+            ],
+            [
+              -123.205567075689,
+              39.1337500274517
+            ],
+            [
+              -123.205097699949,
+              39.1337571942371
+            ],
+            [
+              -123.205023162954,
+              39.1332507857266
+            ]
+          ]
+        ]
+      }
+    }
+  ]
+}
